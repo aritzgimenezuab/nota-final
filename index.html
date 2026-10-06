@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinalMark | Càlcul acadèmic amb claredat i pau</title>
-    <!-- Estils modulars en fitxers separats -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animations.css">
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- GOOGLE ADSENSE (Canvia pel teu ID quan el tinguis) -->
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script> -->
 </head>
 <body class="bg-[#f8fafc] text-slate-700 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-teal-100 selection:text-teal-800">
 
-    <!-- ANUNCIO SUPERIOR ADSENSE (Discret i integrat) -->
+    <!-- ANUNCIO SUPERIOR ADSENSE -->
     <header class="w-full bg-white border-b border-slate-200/80 py-3 shadow-2xs">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <div class="ad-banner bg-slate-50 border border-slate-200 rounded-lg p-2 text-[11px] text-slate-400 uppercase tracking-widest font-mono">
@@ -25,10 +21,22 @@
             <h1 class="text-2xl font-bold tracking-tight text-slate-800 flex items-center gap-1.5">
                 FinalMark<span class="w-2 h-2 rounded-full bg-teal-500 inline-block"></span>
             </h1>
-            <div id="auth-header-container" class="flex items-center space-x-3">
-                <button onclick="authManager.obrirModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold px-4 py-2 rounded-xl transition border border-slate-200">
-                    El meu compte
-                </button>
+            
+            <div class="flex items-center space-x-3">
+                <!-- Desplegable de selecció d'idioma -->
+                <select id="language-selector" onchange="languageManager.canviarIdioma(this.value)" class="bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-medium text-slate-600 focus:outline-none focus:border-teal-500 cursor-pointer">
+                    <option value="ca">Català</option>
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="eu">Euskara</option>
+                </select>
+
+                <div id="auth-header-container">
+                    <button onclick="authManager.obrirModal()" id="text-compte" class="bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold px-3.5 py-2 rounded-xl transition border border-slate-200">
+                        El meu compte
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -36,20 +44,19 @@
     <!-- CONTINGUT PRINCIPAL SERÈ -->
     <main class="max-w-3xl mx-auto px-4 py-12 flex-grow w-full space-y-8">
         
-        <!-- Títol amb harmonia i espai visual -->
         <div class="text-center space-y-3">
-            <span class="inline-block text-xs font-bold uppercase tracking-wider bg-teal-50 text-teal-700 px-3.5 py-1 rounded-full border border-teal-100">
+            <span id="text-tag" class="inline-block text-xs font-bold uppercase tracking-wider bg-teal-50 text-teal-700 px-3.5 py-1 rounded-full border border-teal-100">
                 Claredat Acadèmica
             </span>
-            <h2 class="text-3xl md:text-4xl font-light text-slate-900 tracking-tight">
+            <h2 id="text-title" class="text-3xl md:text-4xl font-light text-slate-900 tracking-tight">
                 Calcula el teu futur amb <span class="font-semibold text-teal-700">pau mental</span>
             </h2>
-            <p class="text-slate-500 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
+            <p id="text-subtitle" class="text-slate-500 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
                 Organitza exàmens, treballs i sub-percentatges complexos en un entorn net, harmoniu i lliure de distraccions.
             </p>
         </div>
 
-        <!-- Selector de Pestanyes Estil Suau -->
+        <!-- Selector de Pestanyes -->
         <div class="flex bg-slate-200/70 p-1 rounded-2xl max-w-xs mx-auto border border-slate-200">
             <button onclick="appManager.canviarPestanya('mitjana')" id="btn-pestanya-mitjana" class="flex-1 py-2 rounded-xl text-xs font-medium transition bg-white text-slate-800 shadow-xs">
                 Mitjana Ponderada
@@ -59,63 +66,60 @@
             </button>
         </div>
 
-        <!-- TARGETA PRINCIPAL DE CÀLCUL (Blanc pur amb ombra molt suau) -->
+        <!-- TARGETA PRINCIPAL -->
         <div class="bg-white border border-slate-200/90 rounded-3xl p-6 md:p-8 shadow-xl shadow-slate-100 space-y-6">
             
-            <!-- MÒDUL 1: MITJANA DINÀMICA -->
+            <!-- MÒDUL 1 -->
             <div id="modul-mitjana" class="space-y-5">
                 <div class="flex justify-between items-center pb-2 border-b border-slate-100">
-                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    <h3 id="text-desglossament" class="text-xs font-bold text-slate-400 uppercase tracking-wider">
                         Desglossament de Proves i Percentatges
                     </h3>
-                    <button onclick="storageManager.guardarEstatActual()" class="text-xs text-teal-600 hover:text-teal-700 font-medium">
+                    <button onclick="storageManager.guardarEstatActual()" id="text-desar" class="text-xs text-teal-600 hover:text-teal-700 font-medium">
                         Desar estat 💾
                     </button>
                 </div>
 
-                <!-- Llista de files netes -->
-                <div id="files-container" class="space-y-3">
-                    <!-- S'omple des de calculator.js -->
-                </div>
+                <div id="files-container" class="space-y-3"></div>
 
                 <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                    <button onclick="calculatorManager.afegirFila()" class="flex-1 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 font-medium py-3 rounded-2xl text-xs transition flex items-center justify-center space-x-2">
+                    <button onclick="calculatorManager.afegirFila()" id="text-afegir" class="flex-1 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 font-medium py-3 rounded-2xl text-xs transition flex items-center justify-center space-x-2">
                         <span class="text-teal-600 font-bold text-base">+</span>
                         <span>Afegir element o sub-percentatge</span>
                     </button>
-                    <button onclick="calculatorManager.calcularMitjana()" class="flex-1 bg-teal-700 hover:bg-teal-800 text-white font-medium py-3 rounded-2xl text-xs transition shadow-md shadow-teal-700/10">
+                    <button onclick="calculatorManager.calcularMitjana()" id="text-calcular" class="flex-1 bg-teal-700 hover:bg-teal-800 text-white font-medium py-3 rounded-2xl text-xs transition shadow-md shadow-teal-700/10">
                         Calcular Mitjana Final
                     </button>
                 </div>
             </div>
 
-            <!-- MÒDUL 2: EXAMEN FINAL -->
+            <!-- MÒDUL 2 -->
             <div id="modul-examen" class="space-y-5 hidden">
                 <div class="space-y-4">
-                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider pb-2 border-b border-slate-100">
+                    <h3 id="text-obj-examen" class="text-xs font-bold text-slate-400 uppercase tracking-wider pb-2 border-b border-slate-100">
                         Objectiu per a l'Examen Final
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="space-y-1">
-                            <label class="block text-xs font-medium text-slate-500">Nota actual acumulada</label>
+                            <label id="text-lbl-acumulada" class="block text-xs font-medium text-slate-500">Nota actual acumulada</label>
                             <input type="number" id="inv-acumulada" step="0.01" placeholder="Ex: 6.5" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-700 focus:outline-none focus:border-teal-500 font-mono">
                         </div>
                         <div class="space-y-1">
-                            <label class="block text-xs font-medium text-slate-500">Pes de l'examen final (%)</label>
+                            <label id="text-lbl-pes" class="block text-xs font-medium text-slate-500">Pes de l'examen final (%)</label>
                             <input type="number" id="inv-pes" step="0.01" placeholder="Ex: 40" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-700 focus:outline-none focus:border-teal-500 font-mono">
                         </div>
                         <div class="space-y-1">
-                            <label class="block text-xs font-medium text-slate-500">Nota objectiu desitjada</label>
+                            <label id="text-lbl-objectiu" class="block text-xs font-medium text-slate-500">Nota objectiu desitjada</label>
                             <input type="number" id="inv-objectiu" step="0.01" value="5.00" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-700 focus:outline-none focus:border-teal-500 font-mono">
                         </div>
                     </div>
-                    <button onclick="calculatorManager.calcularNotaInversa()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium py-3.5 rounded-2xl text-xs transition shadow-md">
+                    <button onclick="calculatorManager.calcularNotaInversa()" id="text-calc-requerida" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium py-3.5 rounded-2xl text-xs transition shadow-md">
                         Calcular Nota Requerida
                     </button>
                 </div>
             </div>
 
-            <!-- CAIXA DE RESULTAT SERÈNA -->
+            <!-- CAIXA DE RESULTAT -->
             <div id="resultat-box" class="bg-teal-50/60 border border-teal-100 rounded-2xl p-6 text-center space-y-2 hidden">
                 <span id="resultat-titol" class="text-xs text-teal-800 uppercase tracking-wider font-semibold">Resultat</span>
                 <h3 id="resultat-text" class="text-3xl md:text-4xl font-light text-teal-900">-</h3>
@@ -124,7 +128,7 @@
 
         </div>
 
-        <!-- ANUNCIO INTERMEDIO ADSENSE -->
+        <!-- ANUNCIO INTERMEDIO -->
         <div class="w-full bg-white border border-slate-200 rounded-2xl p-4 text-center my-6 shadow-2xs">
             <div class="ad-banner bg-slate-50 border border-slate-200 rounded-lg p-3 text-[11px] text-slate-400 uppercase tracking-widest font-mono">
                 [ Espai Publicitari Google AdSense - Bloc Intermedi ]
@@ -135,39 +139,35 @@
 
     <!-- PEU DE PÀGINA -->
     <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 space-y-1">
-        <p>&copy; 2026 FinalMark. Disseny harmoniu i transparent per a estudiants.</p>
+        <p id="text-footer">&copy; 2026 FinalMark. Disseny harmoniu i transparent per a estudiants.</p>
+        <div>
+            <a href="privadesa.html" id="text-privadesa" class="hover:text-teal-700 underline transition">Política de Privadesa</a>
+        </div>
     </footer>
 
-    <!-- MODAL DE GESTIÓ D'USUARI -->
+    <!-- MODAL -->
     <div id="auth-modal" class="fixed inset-0 bg-slate-900/20 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white border border-slate-200 rounded-3xl max-w-md w-full p-6 md:p-8 shadow-2xl space-y-5 relative">
             <div class="flex justify-between items-center">
-                <h3 class="text-lg font-bold text-slate-800">El teu compte FinalMark</h3>
+                <h3 id="text-modal-title" class="text-lg font-bold text-slate-800">El teu compte FinalMark</h3>
                 <button onclick="authManager.tancarModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg">&times;</button>
             </div>
-            <p class="text-xs text-slate-500 leading-relaxed">Introdueix el teu correu per mantenir sincronitzades les teves dades acadèmiques amb total seguretat.</p>
+            <p id="text-modal-desc" class="text-xs text-slate-500 leading-relaxed">Introdueix el teu correu per mantenir sincronitzades les teves dades acadèmiques amb total seguretat.</p>
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-medium text-slate-600 mb-1">Correu electrònic</label>
+                    <label id="text-lbl-email" class="block text-xs font-medium text-slate-600 mb-1">Correu electrònic</label>
                     <input type="email" id="auth-email-input" placeholder="estudiant@uni.edu" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-700 focus:outline-none focus:border-teal-500">
                 </div>
-                <button onclick="authManager.guardarUsuari()" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-medium py-3 rounded-xl text-xs transition shadow-sm">
+                <button onclick="authManager.guardarUsuari()" id="text-btn-sync" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-medium py-3 rounded-xl text-xs transition shadow-sm">
                     Sincronitzar dades
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- PEU DE PÀGINA -->
-    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 space-y-2">
-        <p>&copy; 2026 FinalMark. Disseny harmoniu i transparent per a estudiants.</p>
-        <div>
-            <a href="privadesa.html" class="hover:text-teal-700 underline transition">Política de Privadesa</a>
-        </div>
-    </footer>
-
-    
-    <!-- CÀRREGA DE 7 FITXERS JS MODULES -->
+    <!-- CARREGA DE MÒDULS JS -->
+    <script src="translations.js"></script>
+    <script src="language.js"></script>
     <script src="theme.js"></script>
     <script src="auth.js"></script>
     <script src="storage.js"></script>
