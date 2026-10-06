@@ -3,82 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinalMark | Calculadora de Mitjanes i Notes d'Examen</title>
-    <!-- Estils professionals -->
+    <title>FinalMark | Càlcul acadèmic amb claredat i pau</title>
+    <!-- Estils modulars en fitxers separats -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- GOOGLE ADSENSE (Canvia pel teu ID quan el tinguis) -->
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script> -->
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+<body class="bg-[#f8fafc] text-slate-700 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-teal-100 selection:text-teal-800">
 
-    <!-- ANUNCIO SUPERIOR ADSENSE -->
-    <header class="w-full bg-slate-900 border-b border-slate-800/80 py-3">
+    <!-- ANUNCIO SUPERIOR ADSENSE (Discret i integrat) -->
+    <header class="w-full bg-white border-b border-slate-200/80 py-3 shadow-2xs">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="ad-banner bg-slate-950 border border-slate-800/60 rounded-lg p-2 text-xs text-slate-500 uppercase tracking-widest">
+            <div class="ad-banner bg-slate-50 border border-slate-200 rounded-lg p-2 text-[11px] text-slate-400 uppercase tracking-widest font-mono">
                 [ Espai Publicitari Google AdSense - Superior ]
             </div>
         </div>
         <div class="max-w-4xl mx-auto px-4 mt-3 flex justify-between items-center">
-            <h1 class="text-2xl font-black tracking-tighter uppercase bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-                FinalMark<span class="text-blue-500">.</span>
+            <h1 class="text-2xl font-bold tracking-tight text-slate-800 flex items-center gap-1.5">
+                FinalMark<span class="w-2 h-2 rounded-full bg-teal-500 inline-block"></span>
             </h1>
-            <span class="text-xs text-slate-400 font-mono bg-slate-900 px-3 py-1 rounded-full border border-slate-800">Eina Acadèmica Pro</span>
+            <div id="auth-header-container" class="flex items-center space-x-3">
+                <button onclick="authManager.obrirModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold px-4 py-2 rounded-xl transition border border-slate-200">
+                    El meu compte
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- CONTINGUT PRINCIPAL -->
-    <main class="max-w-3xl mx-auto px-4 py-10 flex-grow w-full space-y-8">
+    <!-- CONTINGUT PRINCIPAL SERÈ -->
+    <main class="max-w-3xl mx-auto px-4 py-12 flex-grow w-full space-y-8">
         
-        <!-- Títol i descripció harmònica -->
+        <!-- Títol amb harmonia i espai visual -->
         <div class="text-center space-y-3">
-            <span class="text-xs font-semibold uppercase tracking-widest bg-blue-500/10 text-blue-400 px-3.5 py-1.5 rounded-full border border-blue-500/20">Calculadora Acadèmica Intel·ligent</span>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Calcula la teva mitjana amb precisió total</h2>
-            <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">Afegeix tantes notes, exàmens o sub-percentatges com necessitis per calcular el teu futur acadèmic amb FinalMark.</p>
+            <span class="inline-block text-xs font-bold uppercase tracking-wider bg-teal-50 text-teal-700 px-3.5 py-1 rounded-full border border-teal-100">
+                Claredat Acadèmica
+            </span>
+            <h2 class="text-3xl md:text-4xl font-light text-slate-900 tracking-tight">
+                Calcula el teu futur amb <span class="font-semibold text-teal-700">pau mental</span>
+            </h2>
+            <p class="text-slate-500 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
+                Organitza exàmens, treballs i sub-percentatges complexos en un entorn net, harmoniu i lliure de distraccions.
+            </p>
         </div>
 
-        <!-- TARGETA PRINCIPAL -->
-        <div class="bg-slate-900/90 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 md:p-8 shadow-2xl space-y-8">
+        <!-- Selector de Pestanyes Estil Suau -->
+        <div class="flex bg-slate-200/70 p-1 rounded-2xl max-w-xs mx-auto border border-slate-200">
+            <button onclick="appManager.canviarPestanya('mitjana')" id="btn-pestanya-mitjana" class="flex-1 py-2 rounded-xl text-xs font-medium transition bg-white text-slate-800 shadow-xs">
+                Mitjana Ponderada
+            </button>
+            <button onclick="appManager.canviarPestanya('examen')" id="btn-pestanya-examen" class="flex-1 py-2 rounded-xl text-xs font-medium transition text-slate-500 hover:text-slate-800">
+                Examen Final
+            </button>
+        </div>
+
+        <!-- TARGETA PRINCIPAL DE CÀLCUL (Blanc pur amb ombra molt suau) -->
+        <div class="bg-white border border-slate-200/90 rounded-3xl p-6 md:p-8 shadow-xl shadow-slate-100 space-y-6">
             
-            <!-- CONTENIDOR DE FILES DINÀMIQUES -->
-            <div class="space-y-4">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
-                        <span>📝</span> Proves, Exàmens o Treballs
+            <!-- MÒDUL 1: MITJANA DINÀMICA -->
+            <div id="modul-mitjana" class="space-y-5">
+                <div class="flex justify-between items-center pb-2 border-b border-slate-100">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                        Desglossament de Proves i Percentatges
                     </h3>
-                    <span class="text-xs text-slate-500">Pots afegir files il·limitades</span>
+                    <button onclick="storageManager.guardarEstatActual()" class="text-xs text-teal-600 hover:text-teal-700 font-medium">
+                        Desar estat 💾
+                    </button>
                 </div>
 
-                <!-- Llista de files generades per JavaScript -->
+                <!-- Llista de files netes -->
                 <div id="files-container" class="space-y-3">
-                    <!-- S'omple automàticament des d'app.js -->
+                    <!-- S'omple des de calculator.js -->
                 </div>
 
-                <!-- Botó Afegir Fila -->
-                <button onclick="afegirFila()" class="w-full bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 text-slate-300 font-semibold py-3 rounded-2xl text-xs transition flex items-center justify-center space-x-2">
-                    <span class="text-blue-400 font-bold text-base">+</span>
-                    <span>Afegir una altra prova o sub-percentatge</span>
-                </button>
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button onclick="calculatorManager.afegirFila()" class="flex-1 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 font-medium py-3 rounded-2xl text-xs transition flex items-center justify-center space-x-2">
+                        <span class="text-teal-600 font-bold text-base">+</span>
+                        <span>Afegir element o sub-percentatge</span>
+                    </button>
+                    <button onclick="calculatorManager.calcularMitjana()" class="flex-1 bg-teal-700 hover:bg-teal-800 text-white font-medium py-3 rounded-2xl text-xs transition shadow-md shadow-teal-700/10">
+                        Calcular Mitjana Final
+                    </button>
+                </div>
             </div>
 
-            <!-- BOTÓ DE CÀLCUL PRINCIPAL -->
-            <button onclick="calcularMitjanaDinamica()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-95 text-white font-bold py-4 rounded-2xl text-sm transition shadow-lg shadow-blue-600/25 flex items-center justify-center space-x-2">
-                <span>Calcular Mitjana Final 📊</span>
-            </button>
+            <!-- MÒDUL 2: EXAMEN FINAL -->
+            <div id="modul-examen" class="space-y-5 hidden">
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider pb-2 border-b border-slate-100">
+                        Objectiu per a l'Examen Final
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="space-y-1">
+                            <label class="block text-xs font-medium text-slate-500">Nota actual acumulada</label>
+                            <input type="number" id="inv-acumulada" step="0.01" placeholder="Ex: 6.5" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-700 focus:outline-none focus:border-teal-500 font-mono">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-xs font-medium text-slate-500">Pes de l'examen final (%)</label>
+                            <input type="number" id="inv-pes" step="0.01" placeholder="Ex: 40" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-700 focus:outline-none focus:border-teal-500 font-mono">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-xs font-medium text-slate-500">Nota objectiu desitjada</label>
+                            <input type="number" id="inv-objectiu" step="0.01" value="5.00" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-700 focus:outline-none focus:border-teal-500 font-mono">
+                        </div>
+                    </div>
+                    <button onclick="calculatorManager.calcularNotaInversa()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium py-3.5 rounded-2xl text-xs transition shadow-md">
+                        Calcular Nota Requerida
+                    </button>
+                </div>
+            </div>
 
-            <!-- CAIXA DE RESULTAT ESTILITZADA -->
-            <div id="resultat-box" class="bg-slate-950 border border-slate-800/80 rounded-2xl p-6 text-center space-y-2 hidden transition-all duration-300">
-                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Nota Final Obtinguda</span>
-                <h3 id="resultat-text" class="text-3xl md:text-4xl font-black text-blue-400">-</h3>
-                <p id="resultat-subtext" class="text-xs text-slate-400 pt-1 leading-relaxed max-w-md mx-auto"></p>
+            <!-- CAIXA DE RESULTAT SERÈNA -->
+            <div id="resultat-box" class="bg-teal-50/60 border border-teal-100 rounded-2xl p-6 text-center space-y-2 hidden">
+                <span id="resultat-titol" class="text-xs text-teal-800 uppercase tracking-wider font-semibold">Resultat</span>
+                <h3 id="resultat-text" class="text-3xl md:text-4xl font-light text-teal-900">-</h3>
+                <p id="resultat-subtext" class="text-xs text-teal-700/80 pt-1 leading-relaxed max-w-md mx-auto"></p>
             </div>
 
         </div>
 
         <!-- ANUNCIO INTERMEDIO ADSENSE -->
-        <div class="w-full bg-slate-900 border border-slate-800/80 rounded-2xl p-4 text-center my-6">
-            <div class="ad-banner bg-slate-950 border border-slate-800/60 rounded-lg p-3 text-xs text-slate-500 uppercase tracking-widest">
+        <div class="w-full bg-white border border-slate-200 rounded-2xl p-4 text-center my-6 shadow-2xs">
+            <div class="ad-banner bg-slate-50 border border-slate-200 rounded-lg p-3 text-[11px] text-slate-400 uppercase tracking-widest font-mono">
                 [ Espai Publicitari Google AdSense - Bloc Intermedi ]
             </div>
         </div>
@@ -86,11 +134,35 @@
     </main>
 
     <!-- PEU DE PÀGINA -->
-    <footer class="bg-slate-900 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 space-y-2">
-        <p>&copy; 2026 FinalMark. Tots els drets reservats. Disseny harmoniu per a estudiants.</p>
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 space-y-1">
+        <p>&copy; 2026 FinalMark. Disseny harmoniu i transparent per a estudiants.</p>
     </footer>
 
-    <!-- Script lògic -->
+    <!-- MODAL DE GESTIÓ D'USUARI -->
+    <div id="auth-modal" class="fixed inset-0 bg-slate-900/20 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white border border-slate-200 rounded-3xl max-w-md w-full p-6 md:p-8 shadow-2xl space-y-5 relative">
+            <div class="flex justify-between items-center">
+                <h3 class="text-lg font-bold text-slate-800">El teu compte FinalMark</h3>
+                <button onclick="authManager.tancarModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg">&times;</button>
+            </div>
+            <p class="text-xs text-slate-500 leading-relaxed">Introdueix el teu correu per mantenir sincronitzades les teves dades acadèmiques amb total seguretat.</p>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">Correu electrònic</label>
+                    <input type="email" id="auth-email-input" placeholder="estudiant@uni.edu" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-700 focus:outline-none focus:border-teal-500">
+                </div>
+                <button onclick="authManager.guardarUsuari()" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-medium py-3 rounded-xl text-xs transition shadow-sm">
+                    Sincronitzar dades
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CÀRREGA DE 7 FITXERS JS MODULES -->
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+    <script src="storage.js"></script>
+    <script src="calculator.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
