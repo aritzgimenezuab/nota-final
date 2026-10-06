@@ -121,4 +121,4 @@ class CalculatorManager {
     }
 }
 
-const calculatorManager = new CalculatorManager();
+window.calculatorManager = new CalculatorManager();
