@@ -3,122 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NotaFinal | Calculadora de Mitjanes i Notes d'Examen Final</title>
+    <title>FinalMark | Calculadora de Mitjanes i Notes d'Examen</title>
     <!-- Estils professionals -->
     <link rel="stylesheet" href="style.css">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- GOOGLE ADSENSE (Canvia el client pel teu ID quan el tinguis) -->
+    <!-- GOOGLE ADSENSE (Canvia pel teu ID quan el tinguis) -->
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script> -->
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
     <!-- ANUNCIO SUPERIOR ADSENSE -->
-    <header class="w-full bg-slate-900 border-b border-slate-800 py-3">
+    <header class="w-full bg-slate-900 border-b border-slate-800/80 py-3">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="ad-banner bg-slate-950 border border-slate-800 rounded-lg p-2 text-xs text-slate-500 uppercase tracking-widest">
+            <div class="ad-banner bg-slate-950 border border-slate-800/60 rounded-lg p-2 text-xs text-slate-500 uppercase tracking-widest">
                 [ Espai Publicitari Google AdSense - Superior ]
             </div>
         </div>
         <div class="max-w-4xl mx-auto px-4 mt-3 flex justify-between items-center">
-            <h1 class="text-2xl font-black tracking-tighter uppercase bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
-                NotaFinal<span class="text-blue-500">.</span>es
+            <h1 class="text-2xl font-black tracking-tighter uppercase bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                FinalMark<span class="text-blue-500">.</span>
             </h1>
-            <span class="text-xs text-slate-400 font-mono">Eina oficial per a estudiants</span>
+            <span class="text-xs text-slate-400 font-mono bg-slate-900 px-3 py-1 rounded-full border border-slate-800">Eina Acadèmica Pro</span>
         </div>
     </header>
 
     <!-- CONTINGUT PRINCIPAL -->
-    <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
+    <main class="max-w-3xl mx-auto px-4 py-10 flex-grow w-full space-y-8">
         
-        <!-- Títol i descripció -->
-        <div class="text-center space-y-2">
-            <span class="text-xs font-bold uppercase tracking-widest bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">Càlcul Acadèmic Ràpid</span>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white">Quina nota necessites a l'examen final?</h2>
-            <p class="text-slate-400 text-sm md:text-base">Calcula la teva mitjana ponderada o descobreix la nota exacta que et falta per aprovar l'assignatura.</p>
+        <!-- Títol i descripció harmònica -->
+        <div class="text-center space-y-3">
+            <span class="text-xs font-semibold uppercase tracking-widest bg-blue-500/10 text-blue-400 px-3.5 py-1.5 rounded-full border border-blue-500/20">Calculadora Acadèmica Intel·ligent</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Calcula la teva mitjana amb precisió total</h2>
+            <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">Afegeix tantes notes, exàmens o sub-percentatges com necessitis per calcular el teu futur acadèmic amb FinalMark.</p>
         </div>
 
-        <!-- TARGETA DE LA CALCULADORA -->
-        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6">
+        <!-- TARGETA PRINCIPAL -->
+        <div class="bg-slate-900/90 backdrop-blur-md border border-slate-800/80 rounded-3xl p-6 md:p-8 shadow-2xl space-y-8">
             
-            <!-- Selector de Mode (Pestanyes) -->
-            <div class="flex bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
-                <button onclick="canviarMode('minim')" id="tab-minim" class="flex-1 py-2.5 rounded-xl text-xs font-bold transition bg-blue-600 text-white shadow-lg">
-                    Nota per Aprovar / Objectiu 🎯
-                </button>
-                <button onclick="canviarMode('mitjana')" id="tab-mitjana" class="flex-1 py-2.5 rounded-xl text-xs font-bold transition text-slate-400 hover:text-white">
-                    Mitjana Ponderada 📊
+            <!-- CONTENIDOR DE FILES DINÀMIQUES -->
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                        <span>📝</span> Proves, Exàmens o Treballs
+                    </h3>
+                    <span class="text-xs text-slate-500">Pots afegir files il·limitades</span>
+                </div>
+
+                <!-- Llista de files generades per JavaScript -->
+                <div id="files-container" class="space-y-3">
+                    <!-- S'omple automàticament des d'app.js -->
+                </div>
+
+                <!-- Botó Afegir Fila -->
+                <button onclick="afegirFila()" class="w-full bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 text-slate-300 font-semibold py-3 rounded-2xl text-xs transition flex items-center justify-center space-x-2">
+                    <span class="text-blue-400 font-bold text-base">+</span>
+                    <span>Afegir una altra prova o sub-percentatge</span>
                 </button>
             </div>
 
-            <!-- CONTINGUT MODE 1: NOTA NECESSÀRIA PER AL FINAL -->
-            <div id="panel-minim" class="space-y-4">
-                <div class="space-y-1">
-                    <label class="block text-xs font-bold text-slate-300">Nota actual acumulada (sobre 10)</label>
-                    <input type="number" id="nota-acumulada" step="0.01" min="0" max="10" placeholder="Ex: 6.5" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
-                </div>
-                <div class="space-y-1">
-                    <label class="block text-xs font-bold text-slate-300">Pes de l'examen final en la nota total (%)</label>
-                    <input type="number" id="pes-final" min="1" max="100" placeholder="Ex: 40 (si val un 40%)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
-                </div>
-                <div class="space-y-1">
-                    <label class="block text-xs font-bold text-slate-300">Nota mínima desitjada per aprovar (o objectiu)</label>
-                    <input type="number" id="nota-objectiu" step="0.01" min="0" max="10" value="5" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
-                </div>
-                <button onclick="calcularNotaMinima()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 rounded-xl text-sm transition shadow-lg shadow-blue-600/20">
-                    Calcular Nota Requerida ⚡
-                </button>
-            </div>
+            <!-- BOTÓ DE CÀLCUL PRINCIPAL -->
+            <button onclick="calcularMitjanaDinamica()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-95 text-white font-bold py-4 rounded-2xl text-sm transition shadow-lg shadow-blue-600/25 flex items-center justify-center space-x-2">
+                <span>Calcular Mitjana Final 📊</span>
+            </button>
 
-            <!-- CONTINGUT MODE 2: MITJANA PONDERADA (Amagat per defecte) -->
-            <div id="panel-mitjana" class="space-y-4 hidden">
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-400 mb-1">Nota Parcial 1</label>
-                        <input type="number" id="m-nota1" step="0.01" placeholder="Nota" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-400 mb-1">Pes (%)</label>
-                        <input type="number" id="m-pes1" placeholder="Ex: 30" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100">
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-400 mb-1">Nota Parcial 2 / Treball</label>
-                        <input type="number" id="m-nota2" step="0.01" placeholder="Nota" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-400 mb-1">Pes (%)</label>
-                        <input type="number" id="m-pes2" placeholder="Ex: 30" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100">
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-400 mb-1">Nota Examen Final</label>
-                        <input type="number" id="m-nota3" step="0.01" placeholder="Nota" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-400 mb-1">Pes (%)</label>
-                        <input type="number" id="m-pes3" placeholder="Ex: 40" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100">
-                    </div>
-                </div>
-                <button onclick="calcularMitjanaPonderada()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl text-sm transition shadow-lg shadow-indigo-600/20">
-                    Calcular Mitjana Final 📊
-                </button>
-            </div>
-
-            <!-- CAIXA DE RESULTAT -->
-            <div id="resultat-box" class="bg-slate-950 border border-slate-800 rounded-2xl p-5 text-center space-y-1 hidden">
-                <span class="text-xs text-slate-400 uppercase tracking-wider font-bold">Resultat de l'anàlisi</span>
-                <h3 id="resultat-text" class="text-2xl md:text-3xl font-black text-blue-400">-</h3>
-                <p id="resultat-subtext" class="text-xs text-slate-400 pt-1"></p>
+            <!-- CAIXA DE RESULTAT ESTILITZADA -->
+            <div id="resultat-box" class="bg-slate-950 border border-slate-800/80 rounded-2xl p-6 text-center space-y-2 hidden transition-all duration-300">
+                <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Nota Final Obtinguda</span>
+                <h3 id="resultat-text" class="text-3xl md:text-4xl font-black text-blue-400">-</h3>
+                <p id="resultat-subtext" class="text-xs text-slate-400 pt-1 leading-relaxed max-w-md mx-auto"></p>
             </div>
 
         </div>
 
         <!-- ANUNCIO INTERMEDIO ADSENSE -->
-        <div class="w-full bg-slate-900 border border-slate-800 rounded-2xl p-4 text-center my-6">
-            <div class="ad-banner bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-slate-500 uppercase tracking-widest">
+        <div class="w-full bg-slate-900 border border-slate-800/80 rounded-2xl p-4 text-center my-6">
+            <div class="ad-banner bg-slate-950 border border-slate-800/60 rounded-lg p-3 text-xs text-slate-500 uppercase tracking-widest">
                 [ Espai Publicitari Google AdSense - Bloc Intermedi ]
             </div>
         </div>
@@ -126,8 +86,8 @@
     </main>
 
     <!-- PEU DE PÀGINA -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500 space-y-2">
-        <p>&copy; 2026 NotaFinal.es. L'eina de referència per a estudiants de secundària i universitat.</p>
+    <footer class="bg-slate-900 border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 space-y-2">
+        <p>&copy; 2026 FinalMark. Tots els drets reservats. Disseny harmoniu per a estudiants.</p>
     </footer>
 
     <!-- Script lògic -->
