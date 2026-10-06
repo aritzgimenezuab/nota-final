@@ -24,7 +24,7 @@ class LanguageManager {
     aplicarTraduccions() {
         const t = (clau) => this.t(clau);
 
-        // Traduir elements de l'index
+        // Textos estàtics de l'index
         if(document.getElementById('text-tag')) document.getElementById('text-tag').innerText = t('tag');
         if(document.getElementById('text-title')) document.getElementById('text-title').innerHTML = t('title');
         if(document.getElementById('text-subtitle')) document.getElementById('text-subtitle').innerText = t('subtitle');
@@ -39,13 +39,18 @@ class LanguageManager {
         if(document.getElementById('text-lbl-pes')) document.getElementById('text-lbl-pes').innerText = t('pesFinal');
         if(document.getElementById('text-lbl-objectiu')) document.getElementById('text-lbl-objectiu').innerText = t('notaObjectiu');
         if(document.getElementById('text-calc-requerida')) document.getElementById('text-calc-requerida').innerText = t('calcularRequerida');
-        if(document.getElementById('text-footer')) document.getElementById('text-footer').innerText = t('footer');
+        if(document.getElementById('text-footer')) document.getElementById('text-footer').innerHTML = t('footer');
         if(document.getElementById('text-privadesa')) document.getElementById('text-privadesa').innerText = t('privadesa');
         if(document.getElementById('text-compte')) document.getElementById('text-compte').innerText = t('compte');
         if(document.getElementById('text-modal-title')) document.getElementById('text-modal-title').innerText = t('modalTitol');
         if(document.getElementById('text-modal-desc')) document.getElementById('text-modal-desc').innerText = t('modalText');
         if(document.getElementById('text-lbl-email')) document.getElementById('text-lbl-email').innerText = t('correuLabel');
         if(document.getElementById('text-btn-sync')) document.getElementById('text-btn-sync').innerText = t('sincronitzar');
+
+        // Actualitzar placeholders dels inputs existents de les files
+        document.querySelectorAll('.fila-nom').forEach(input => {
+            input.placeholder = t('placeholderNom');
+        });
     }
 }
 
