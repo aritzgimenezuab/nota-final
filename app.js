@@ -1,42 +1,62 @@
-function canviarMode(mode) {
-    const tabMinim = document.getElementById('tab-minim');
-    const tabMitjana = document.getElementById('tab-mitjana');
-    const panelMinim = document.getElementById('panel-minim');
-    const panelMitjana = document.getElementById('panel-mitjana');
-    const resultatBox = document.getElementById('resultat-box');
+// Inicialitzar amb 3 files per defecte (Examen, Treball, Pràctica)
+window.onload = () => {
+    afegirFila("Examen Parcial", 7.5, 40);
+    afegirFila("Treball en Grup", 9.0, 30);
+    afegirFila("Pràctiques d'Aula", 8.0, 30);
+};
 
-    resultatBox.classList.add('hidden');
+function afegirFila(nomPredef = "", notaPredef = "", pesPredef = "") {
+    const container = document.getElementById('files-container');
+    const idUnic = Date.now() + Math.random();
 
-    if (mode === 'minim') {
-        tabMinim.className = "flex-1 py-2.5 rounded-xl text-xs font-bold transition bg-blue-600 text-white shadow-lg";
-        tabMitjana.className = "flex-1 py-2.5 rounded-xl text-xs font-bold transition text-slate-400 hover:text-white";
-        panelMinim.classList.remove('hidden');
-        panelMitjana.classList.add('hidden');
-    } else {
-        tabMitjana.className = "flex-1 py-2.5 rounded-xl text-xs font-bold transition bg-indigo-600 text-white shadow-lg";
-        tabMinim.className = "flex-1 py-2.5 rounded-xl text-xs font-bold transition text-slate-400 hover:text-white";
-        panelMitjana.classList.remove('hidden');
-        panelMinim.classList.add('hidden');
+    const rowDiv = document.createElement('div');
+    rowDiv.className = "flex items-center gap-2 bg-slate-950/60 border border-slate-800/80 p-3 rounded-2xl transition hover:border-slate-700";
+    rowDiv.id = `fila-${idUnic}`;
+
+    rowDiv.innerHTML = `
+        <div class="flex-grow">
+            <input type="text" placeholder="Nom (Ex: Parcial 1 / Actitud)" value="${nomPredef}" class="fila-nom w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+        </div>
+        <div class="w-20 md:w-24">
+            <input type="number" step="0.01" min="0" max="10" placeholder="Nota /10" value="${notaPredef}" class="fila-nota w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 text-center font-mono">
+        </div>
+        <div class="w-20 md:w-24">
+            <input type="number" step="0.01" min="0" max="100" placeholder="Pes %" value="${pesPredef}" class="fila-pes w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 text-center font-mono">
+        </div>
+        <button onclick="eliminarFila('${idUnic}')" class="text-slate-500 hover:text-rose-400 p-2 transition font-bold text-sm" title="Eliminar fila">
+            &times;
+        </button>
+    `;
+
+    container.appendChild(rowDiv);
+}
+
+function eliminarFila(id) {
+    const fila = document.getElementById(`fila-${id}`);
+    if (fila) {
+        fila.style.opacity = '0';
+        setTimeout(() => fila.remove(), 150);
     }
 }
 
-function calcularNotaMinima() {
-    const notaAcumulada = parseFloat(document.getElementById('nota-acumulada').value);
-    const pesFinal = parseFloat(document.getElementById('pes-final').value);
-    const notaObjectiu = parseFloat(document.getElementById('nota-objectiu').value);
+function calcularMitjanaDinamica() {
+    const notas = document.querySelectorAll('.fila-nota');
+    const pesos = document.querySelectorAll('.fila-pes');
 
-    if (isNaN(notaAcumulada) || isNaN(pesFinal) || isNaN(notaObjectiu)) {
-        alert("Si us plau, omple tots els camps correctament.");
-        return;
+    let sumaPonderada = 0;
+    let sumaPesos = 0;
+
+    for (let i = 0; i < notas.length; i++) {
+        const notaVal = parseFloat(notas[i].value);
+        const pesVal = parseFloat(pesos[i].value);
+
+        if (isNaN(notaVal) || isNaN(pesVal)) {
+            continue;
+        }
+
+        sumaPonderada += notaVal * (pesVal / 100);
+        sumaPesos += pesVal;
     }
-
-    const percentatgeFinal = pesFinal / 100;
-    const percentatgeAcumulat = 1 - percentatgeFinal;
-
-    // Fórmula: Objectiu = (Acumulat * %Acumulat) + (NotaFinal * %Final)
-    // NotaFinal = (Objectiu - (Acumulat * %Acumulat)) / %Final
-    const puntsAcumulats = notaAcumulada * percentatgeAcumulat;
-    const notaNecessaria = (notaObjectiu - puntsAcumulats) / percentatgeFinal;
 
     const resultatBox = document.getElementById('resultat-box');
     const resultatText = document.getElementById('resultat-text');
@@ -44,42 +64,17 @@ function calcularNotaMinima() {
 
     resultatBox.classList.remove('hidden');
 
-    if (notaNecessaria <= 0) {
-        resultatText.innerText = "0.00 / 10";
-        resultatSubtext.innerText = "¡Enhorabona! Ja has superat l'assignatura abans de l'examen final.";
-    } else if (notaNecessaria > 10) {
-        resultatText.innerText = notaNecessaria.toFixed(2) + " / 10";
-        resultatSubtext.innerText = "⚠️️ Matemàticament impossible d'arribar a aquesta nota (necessitaries més d'un 10).";
-    } else {
-        resultatText.innerText = notaNecessaria.toFixed(2) + " / 10";
-        resultatSubtext.innerText = `Necessites treure un ${notaNecessaria.toFixed(2)} a l'examen final per aconseguir el teu objectiu.`;
-    }
-}
-
-function calcularMitjanaPonderada() {
-    const nota1 = parseFloat(document.getElementById('m-nota1').value) || 0;
-    const pes1 = parseFloat(document.getElementById('m-pes1').value) || 0;
-    
-    const nota2 = parseFloat(document.getElementById('m-nota2').value) || 0;
-    const pes2 = parseFloat(document.getElementById('m-pes2').value) || 0;
-    
-    const nota3 = parseFloat(document.getElementById('m-nota3').value) || 0;
-    const pes3 = parseFloat(document.getElementById('m-pes3').value) || 0;
-
-    const sumaPesos = pes1 + pes2 + pes3;
-
-    if (sumaPesos <= 0) {
-        alert("Introdueix almenys una nota amb el seu pes corresponent.");
+    if (sumaPesos === 0) {
+        resultatText.innerText = "Error";
+        resultatSubtext.innerText = "Si us plau, introdueix almenys una nota i un pes vàlid.";
         return;
     }
 
-    const mitjana = ((nota1 * pes1) + (nota2 * pes2) + (nota3 * pes3)) / sumaPesos;
+    let notaFinalCalculada = sumaPonderada;
+    if (sumaPesos !== 100) {
+        notaFinalCalculada = sumaPonderada / (sumaPesos / 100);
+    }
 
-    const resultatBox = document.getElementById('resultat-box');
-    const resultatText = document.getElementById('resultat-text');
-    const resultatSubtext = document.getElementById('resultat-subtext');
-
-    resultatBox.classList.remove('hidden');
-    resultatText.innerText = mitjana.toFixed(2) + " / 10";
-    resultatSubtext.innerText = `Mitjana calculada sobre un total del ${sumaPesos}% dels pesos introduïts.`;
+    resultatText.innerText = notaFinalCalculada.toFixed(2) + " / 10";
+    resultatSubtext.innerText = `Suma total dels pesos analitzats: ${sumaPesos}%. ${sumaPesos !== 100 ? '(Calculat proporcionalment al 100%)' : ''}`;
 }
