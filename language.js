@@ -24,7 +24,7 @@ class LanguageManager {
     aplicarTraduccions() {
         const t = (clau) => this.t(clau);
 
-        // Textos estàtics de l'index
+        // Index.html elements
         if(document.getElementById('text-tag')) document.getElementById('text-tag').innerText = t('tag');
         if(document.getElementById('text-title')) document.getElementById('text-title').innerHTML = t('title');
         if(document.getElementById('text-subtitle')) document.getElementById('text-subtitle').innerText = t('subtitle');
@@ -47,7 +47,21 @@ class LanguageManager {
         if(document.getElementById('text-lbl-email')) document.getElementById('text-lbl-email').innerText = t('correuLabel');
         if(document.getElementById('text-btn-sync')) document.getElementById('text-btn-sync').innerText = t('sincronitzar');
 
-        // Actualitzar placeholders dels inputs existents de les files
+        // Privadesa.html elements
+        if(document.getElementById('text-tornar')) document.getElementById('text-tornar').innerText = t('tornarInici');
+        if(document.getElementById('priv-title')) document.getElementById('priv-title').innerText = t('privTitle');
+        if(document.getElementById('priv-date')) document.getElementById('priv-date').innerText = t('privDate');
+        if(document.getElementById('priv-s1-title')) document.getElementById('priv-s1-title').innerText = t('privS1Title');
+        if(document.getElementById('priv-s1-text')) document.getElementById('priv-s1-text').innerText = t('privS1Text');
+        if(document.getElementById('priv-s2-title')) document.getElementById('priv-s2-title').innerText = t('privS2Title');
+        if(document.getElementById('priv-s2-text')) document.getElementById('priv-s2-text').innerText = t('privS2Text');
+        if(document.getElementById('priv-s3-title')) document.getElementById('priv-s3-title').innerText = t('privS3Title');
+        if(document.getElementById('priv-s3-text1')) document.getElementById('priv-s3-text1').innerText = t('privS3Text1');
+        if(document.getElementById('priv-s3-text2')) document.getElementById('priv-s3-text2').innerText = t('privS3Text2');
+        if(document.getElementById('priv-s4-title')) document.getElementById('priv-s4-title').innerText = t('privS4Title');
+        if(document.getElementById('priv-s4-text')) document.getElementById('priv-s4-text').innerText = t('privS4Text');
+
+        // Actualitzar placeholders
         document.querySelectorAll('.fila-nom').forEach(input => {
             input.placeholder = t('placeholderNom');
         });
