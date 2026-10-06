@@ -64,13 +64,15 @@
         <p id="text-footer">&copy;FinalMark 2026</p>
     </footer>
 
-    <!-- Scripts de traducció i configuració -->
+    <!-- Scripts de traducció -->
     <script src="translations.js"></script>
     <script src="language.js"></script>
     <script>
-        window.onload = () => {
-            languageManager.inicialitzar();
-        };
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof languageManager !== 'undefined') {
+                languageManager.inicialitzar();
+            }
+        });
     </script>
 </body>
 </html>
