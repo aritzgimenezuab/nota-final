@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinalMark | Càlcul acadèmic amb claredat i pau</title>
+    <!-- Favicon / Isotip de la pestanya de Google -->
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animations.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,9 +20,10 @@
             </div>
         </div>
         <div class="max-w-4xl mx-auto px-4 mt-3 flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-tight text-slate-800 flex items-center gap-1.5">
-                FinalMark<span class="w-2 h-2 rounded-full bg-teal-500 inline-block"></span>
-            </h1>
+            <!-- Logotip PNG en comptes de text -->
+            <a href="index.html" class="flex items-center">
+                <img src="logo.png" alt="FinalMark Logo" class="h-8 md:h-10 w-auto object-contain">
+            </a>
             
             <div class="flex items-center space-x-3">
                 <!-- Desplegable de selecció d'idioma -->
@@ -46,13 +49,13 @@
         
         <div class="text-center space-y-3">
             <span id="text-tag" class="inline-block text-xs font-bold uppercase tracking-wider bg-teal-50 text-teal-700 px-3.5 py-1 rounded-full border border-teal-100">
-                Claredat Acadèmica
+                Calculadora d'Excel·lència Acadèmica
             </span>
             <h2 id="text-title" class="text-3xl md:text-4xl font-light text-slate-900 tracking-tight">
-                Calcula el teu futur amb <span class="font-semibold text-teal-700">pau mental</span>
+                Domina les teues notes amb <span class="font-semibold text-teal-700">precisió absoluta</span>
             </h2>
             <p id="text-subtitle" class="text-slate-500 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
-                Organitza exàmens, treballs i sub-percentatges complexos en un entorn net, harmoniu i lliure de distraccions.
+                Calcula mitjanes ponderades, exàmens finals i sub-percentatges complexos de manera ràpida i neta.
             </p>
         </div>
 
@@ -73,7 +76,7 @@
             <div id="modul-mitjana" class="space-y-5">
                 <div class="flex justify-between items-center pb-2 border-b border-slate-100">
                     <h3 id="text-desglossament" class="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                        Desglossament de Proves i Percentatges
+                        Estructura d'Avaluació
                     </h3>
                     <button onclick="storageManager.guardarEstatActual()" id="text-desar" class="text-xs text-teal-600 hover:text-teal-700 font-medium">
                         Desar estat 💾
@@ -85,7 +88,7 @@
                 <div class="flex flex-col sm:flex-row gap-3 pt-2">
                     <button onclick="calculatorManager.afegirFila()" id="text-afegir" class="flex-1 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 font-medium py-3 rounded-2xl text-xs transition flex items-center justify-center space-x-2">
                         <span class="text-teal-600 font-bold text-base">+</span>
-                        <span>Afegir element o sub-percentatge</span>
+                        <span>Afegir prova, treball o sub-percentatge</span>
                     </button>
                     <button onclick="calculatorManager.calcularMitjana()" id="text-calcular" class="flex-1 bg-teal-700 hover:bg-teal-800 text-white font-medium py-3 rounded-2xl text-xs transition shadow-md shadow-teal-700/10">
                         Calcular Mitjana Final
@@ -97,7 +100,7 @@
             <div id="modul-examen" class="space-y-5 hidden">
                 <div class="space-y-4">
                     <h3 id="text-obj-examen" class="text-xs font-bold text-slate-400 uppercase tracking-wider pb-2 border-b border-slate-100">
-                        Objectiu per a l'Examen Final
+                        Càlcul de Nota per a l'Examen Final
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="space-y-1">
@@ -139,7 +142,7 @@
 
     <!-- PEU DE PÀGINA -->
     <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 space-y-1">
-        <p id="text-footer">&copy; 2026 FinalMark. Disseny harmoniu i transparent per a estudiants.</p>
+        <p id="text-footer">&copy;FinalMark 2026</p>
         <div>
             <a href="privadesa.html" id="text-privadesa" class="hover:text-teal-700 underline transition">Política de Privadesa</a>
         </div>
