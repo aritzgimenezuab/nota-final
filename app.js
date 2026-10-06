@@ -20,6 +20,7 @@ class AppManager {
 const appManager = new AppManager();
 
 window.onload = () => {
+    languageManager.inicialitzar();
     themeManager.aplicarEsteticaSerena();
     storageManager.carregarEstatInicial();
     authManager.verificarEstat();
