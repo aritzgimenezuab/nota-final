@@ -17,7 +17,7 @@ const dictionary = {
         resultat: "Resultat de l'Anàlisi",
         mitjanaFinal: "Mitjana Ponderada Final",
         notaRequerida: "Nota Requerida Examen Final",
-        footer: "FinalMark &bull; Eina professional de referència per a estudiants.",
+        footer: "&copy;FinalMark 2026",
         privadesa: "Política de Privadesa",
         compte: "El meu compte",
         modalTitol: "El teu compte FinalMark",
@@ -25,7 +25,20 @@ const dictionary = {
         correuLabel: "Correu electrònic",
         sincronitzar: "Sincronitzar dades",
         placeholderNom: "Concepte (Ex: Parcial / Pràctica)",
-        alertaBuit: "Si us plau, introdueix dades vàlides."
+        alertaBuit: "Si us plau, introdueix dades vàlides.",
+        tornarInici: "← Tornar a la calculadora",
+        // Textos de Privadesa
+        privTitle: "Política de Privadesa",
+        privDate: "Última actualització: Octubre 2026",
+        privS1Title: "1. Informació general i responsabilitat",
+        privS1Text: "A FinalMark ens prenem molt seriosament la privadesa i la protecció de les dades dels estudiants. Aquesta pàgina descriu de manera transparent com tractem la informació quan utilitzes la nostra eina de càlcul acadèmic.",
+        privS2Title: "2. Dades emmagatzemades localment (LocalStorage)",
+        privS2Text: "FinalMark no utilitza servidors externs complexos per desar les teves notes o càlculs. Tota la informació de les files, percentatges i el correu opcional de sincronització s'emmagatzema exclusivament al teu propi dispositiu mitjançant l'emmagatzematge local del navegador.",
+        privS3Title: "3. Ús de Publicitat (Google AdSense)",
+        privS3Text1: "Per poder mantenir el servei completament gratuït per a tothom, utilitzem Google AdSense per mostrar anuncis publicitaris. Proveïdors externs, inclòs Google, utilitzen galetes (cookies) per publicar anuncis basats en les visites anteriors dels usuaris a aquesta web.",
+        privS3Text2: "Pots gestionar o desactivar l'ús de cookies publicitàries accedint a la configuració del teu navegador o a través de la pàgina de configuració d'anuncis de Google.",
+        privS4Title: "4. Contacte",
+        privS4Text: "Si tens qualsevol dubte sobre aquesta política de privadesa o sobre el funcionament de la plataforma, pots posar-te en contacte amb nosaltres a través dels canals de suport habituals."
     },
     es: {
         tag: "Calculadora de Excelencia Académica",
@@ -45,7 +58,7 @@ const dictionary = {
         resultat: "Resultado del Análisis",
         mitjanaFinal: "Media Ponderada Final",
         notaRequerida: "Nota Requerida Examen Final",
-        footer: "FinalMark &bull; Herramienta profesional de referencia para estudiantes.",
+        footer: "&copy;FinalMark 2026",
         privadesa: "Política de Privacidad",
         compte: "Mi cuenta",
         modalTitol: "Tu cuenta FinalMark",
@@ -53,7 +66,20 @@ const dictionary = {
         correuLabel: "Correo electrónico",
         sincronitzar: "Sincronizar datos",
         placeholderNom: "Concepto (Ej: Parcial / Práctica)",
-        alertaBuit: "Por favor, introduce datos válidos."
+        alertaBuit: "Por favor, introduce datos válidos.",
+        tornarInici: "← Volver a la calculadora",
+        // Textos de Privadesa
+        privTitle: "Política de Privacidad",
+        privDate: "Última actualización: Octubre 2026",
+        privS1Title: "1. Información general y responsabilidad",
+        privS1Text: "En FinalMark nos tomamos muy en serio la privacidad y la protección de los datos de los estudiantes. Esta página describe de manera transparente cómo tratamos la información cuando utilizas nuestra herramienta de cálculo académico.",
+        privS2Title: "2. Datos almacenados localmente (LocalStorage)",
+        privS2Text: "FinalMark no utiliza servidores externos complejos para guardar tus notas o cálculos. Toda la información de las filas, porcentajes y el correo opcional de sincronización se almacena exclusivamente en tu propio dispositivo mediante el almacenamiento local del navegador.",
+        privS3Title: "3. Uso de Publicidad (Google AdSense)",
+        privS3Text1: "Para poder mantener el servicio completamente gratuito para todos, utilizamos Google AdSense para mostrar anuncios publicitarios. Proveedores externos, incluido Google, utilizan cookies para publicar anuncios basados en las visitas anteriores de los usuarios a esta web.",
+        privS3Text2: "Puedes gestionar o desactivar el uso de cookies publicitarias accediendo a la configuración de tu navegador o a través de la página de configuración de anuncios de Google.",
+        privS4Title: "4. Contacto",
+        privS4Text: "Si tienes cualquier duda sobre esta política de privacidad o sobre el funcionamiento de la plataforma, puedes ponerte en contacto con nosotros a través de los canales de soporte habituales."
     },
     en: {
         tag: "Academic Excellence Calculator",
@@ -73,7 +99,7 @@ const dictionary = {
         resultat: "Analysis Result",
         mitjanaFinal: "Final Weighted Average",
         notaRequerida: "Required Final Exam Grade",
-        footer: "FinalMark &bull; Professional reference tool for students.",
+        footer: "&copy;FinalMark 2026",
         privadesa: "Privacy Policy",
         compte: "My account",
         modalTitol: "Your FinalMark account",
@@ -81,7 +107,20 @@ const dictionary = {
         correuLabel: "Email address",
         sincronitzar: "Synchronize data",
         placeholderNom: "Concept (e.g., Midterm / Practice)",
-        alertaBuit: "Please enter valid data."
+        alertaBuit: "Please enter valid data.",
+        tornarInici: "← Back to calculator",
+        // Textos de Privadesa
+        privTitle: "Privacy Policy",
+        privDate: "Last update: October 2026",
+        privS1Title: "1. General information and responsibility",
+        privS1Text: "At FinalMark we take student privacy and data protection very seriously. This page transparently describes how we handle information when you use our academic calculation tool.",
+        privS2Title: "2. Locally stored data (LocalStorage)",
+        privS2Text: "FinalMark does not use complex external servers to save your grades or calculations. All row information, percentages, and the optional synchronization email are stored exclusively on your own device using browser local storage.",
+        privS3Title: "3. Use of Advertising (Google AdSense)",
+        privS3Text1: "To keep the service completely free for everyone, we use Google AdSense to display advertisements. Third-party vendors, including Google, use cookies to serve ads based on users' prior visits to this website.",
+        privS3Text2: "You can manage or disable the use of advertising cookies by accessing your browser settings or through Google's ad settings page.",
+        privS4Title: "4. Contact",
+        privS4Text: "If you have any questions about this privacy policy or the platform's operation, you can contact us through our regular support channels."
     },
     fr: {
         tag: "Calculateur d'Excellence Académique",
@@ -101,7 +140,7 @@ const dictionary = {
         resultat: "Résultat de l'Analyse",
         mitjanaFinal: "Moyenne Pondérée Finale",
         notaRequerida: "Note Requise Examen Final",
-        footer: "FinalMark &bull; Outil de référence professionnel pour étudiants.",
+        footer: "&copy;FinalMark 2026",
         privadesa: "Politique de Confidentialité",
         compte: "Mon compte",
         modalTitol: "Votre compte FinalMark",
@@ -109,7 +148,20 @@ const dictionary = {
         correuLabel: "Adresse e-mail",
         sincronitzar: "Synchroniser les données",
         placeholderNom: "Concept (Ex: Partiel / TP)",
-        alertaBuit: "Veuillez entrer des données valides."
+        alertaBuit: "Veuillez entrer des données valides.",
+        tornarInici: "← Retour à la calculatrice",
+        // Textos de Privadesa
+        privTitle: "Politique de Confidentialité",
+        privDate: "Dernière mise à jour : Octobre 2026",
+        privS1Title: "1. Informations générales et responsabilité",
+        privS1Text: "Chez FinalMark, nous prenons la confidentialité et la protection des données des étudiants très au sérieux. Cette page décrit en toute transparence comment nous traitons les informations lorsque vous utilisez notre outil.",
+        privS2Title: "2. Données stockées localement (LocalStorage)",
+        privS2Text: "FinalMark n'utilise pas de serveurs externes complexes pour enregistrer vos notes. Toutes les informations des lignes et pourcentages sont stockées exclusivement sur votre propre appareil via le stockage local du navigateur.",
+        privS3Title: "3. Utilisation de la publicité (Google AdSense)",
+        privS3Text1: "Afin de maintenir le service entièrement gratuit, nous utilisons Google AdSense pour diffuser des annonces publicitaires. Des fournisseurs tiers, y compris Google, utilisent des cookies pour diffuser des annonces.",
+        privS3Text2: "Vous pouvez gérer ou désactiver l'utilisation des cookies publicitaires dans les paramètres de votre navigateur ou via la page des paramètres des annonces Google.",
+        privS4Title: "4. Contact",
+        privS4Text: "Si vous avez des questions concernant cette politique de confidentialité, vous pouvez nous contacter via nos canaux de support."
     },
     eu: {
         tag: "Bikaintasun Akademikoaren Kalkulagailua",
@@ -129,7 +181,7 @@ const dictionary = {
         resultat: "Analisiaren Emaitza",
         mitjanaFinal: "Azken Batez Besteko Ponderatua",
         notaRequerida: "Azken Azterketarako Beharrezko Nota",
-        footer: "FinalMark &bull; Ikasleentzako erreferentziazko tresna profesionala.",
+        footer: "&copy;FinalMark 2026",
         privadesa: "Pribatutasun Politika",
         compte: "Nire kontua",
         modalTitol: "Zure FinalMark kontua",
@@ -137,6 +189,19 @@ const dictionary = {
         correuLabel: "Posta elektronikoa",
         sincronitzar: "Sinkronizatu datuak",
         placeholderNom: "Kontzeptua (Adib: Partziala / Praktika)",
-        alertaBuit: "Mesedez, sartu baliozko datuak."
+        alertaBuit: "Mesedez, sartu baliozko datuak.",
+        tornarInici: "← Itzuli kalkulagailura",
+        // Textos de Privadesa
+        privTitle: "Pribatutasun Politika",
+        privDate: "Azken eguneratzea: Urria 2026",
+        privS1Title: "1. Informazio orokorra eta erantzukizuna",
+        privS1Text: "FinalMark-en ikasleen pribatutasuna eta datuen babesa oso serio hartzen ditugu. Orrialde honetan gure kalkulu akademikorako tresna erabiltzen duzunean informazioa nola tratatzen dugun azaltzen da.",
+        privS2Title: "2. Tokian tokian gordetako datuak (LocalStorage)",
+        privS2Text: "FinalMark-ek ez du kanpoko zerbitzari konplexurik erabiltzen zure noten kalkuluak gordetzeko. Lerro eta ehunekoen informazio guztia zure gailuan bertan gordetzen da soilik nabigatzailearen tokiko biltegiratzearen bidez.",
+        privS3Title: "3. Publizitatearen erabilera (Google AdSense)",
+        privS3Text1: "Zerbitzua guztiz doakoa mantentzeko, Google AdSense erabiltzen dugu iragarki publizitarioak erakusteko. Hirugarrenen hornitzaileek, Google barne, cookieak erabiltzen dituzte iragarkiak argitaratzeko.",
+        privS3Text2: "Publizitate-cookieen erabilera kudeatu edo desaktibatu dezakezu zure nabigatzailearen ezarpenetatik edo Googleren iragarkien ezarpenen orriaren bidez.",
+        privS4Title: "4. Harremana",
+        privS4Text: "Pribatutasun politika honen inguruan edo plataformaren funtzionamenduaren inguruan zalantzarik izanez gero, gurekin harremanetan jar zaitezke."
     }
 };
