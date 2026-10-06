@@ -18,13 +18,19 @@ class LanguageManager {
     }
 
     t(clau) {
-        return dictionary[this.idiomaActual][clau] || dictionary['ca'][clau] || clau;
+        if (typeof dictionary !== 'undefined' && dictionary[this.idiomaActual] && dictionary[this.idiomaActual][clau]) {
+            return dictionary[this.idiomaActual][clau];
+        }
+        if (typeof dictionary !== 'undefined' && dictionary['ca'] && dictionary['ca'][clau]) {
+            return dictionary['ca'][clau];
+        }
+        return clau;
     }
 
     aplicarTraduccions() {
         const t = (clau) => this.t(clau);
 
-        // Index.html elements
+        // Elements de l'index.html
         if(document.getElementById('text-tag')) document.getElementById('text-tag').innerText = t('tag');
         if(document.getElementById('text-title')) document.getElementById('text-title').innerHTML = t('title');
         if(document.getElementById('text-subtitle')) document.getElementById('text-subtitle').innerText = t('subtitle');
@@ -47,7 +53,7 @@ class LanguageManager {
         if(document.getElementById('text-lbl-email')) document.getElementById('text-lbl-email').innerText = t('correuLabel');
         if(document.getElementById('text-btn-sync')) document.getElementById('text-btn-sync').innerText = t('sincronitzar');
 
-        // Privadesa.html elements
+        // Elements de la privadesa.html
         if(document.getElementById('text-tornar')) document.getElementById('text-tornar').innerText = t('tornarInici');
         if(document.getElementById('priv-title')) document.getElementById('priv-title').innerText = t('privTitle');
         if(document.getElementById('priv-date')) document.getElementById('priv-date').innerText = t('privDate');
@@ -61,11 +67,11 @@ class LanguageManager {
         if(document.getElementById('priv-s4-title')) document.getElementById('priv-s4-title').innerText = t('privS4Title');
         if(document.getElementById('priv-s4-text')) document.getElementById('priv-s4-text').innerText = t('privS4Text');
 
-        // Actualitzar placeholders
+        // Actualitzar inputs de les files existents
         document.querySelectorAll('.fila-nom').forEach(input => {
             input.placeholder = t('placeholderNom');
         });
     }
 }
 
-const languageManager = new LanguageManager();
+window.languageManager = new LanguageManager();
