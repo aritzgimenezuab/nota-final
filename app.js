@@ -1,45 +1,36 @@
 const appManager = {
     canviarPestanya: function(pestanya) {
-        // Amagar tots els mòduls i el resultat
+        // 1. Amaguem tots els mòduls i el resultat
         document.getElementById('modul-mitjana').classList.add('hidden');
-        document.getElementById('modul-examen').classList.add('hidden');
         document.getElementById('modul-test').classList.add('hidden');
         document.getElementById('resultat-box').classList.add('hidden');
 
-        // Resetejar l'estil de tots els botons a inactiu
-        const btnClassesInactiu = ['text-slate-500', 'hover:text-slate-800'];
-        const btnClassesActiu = ['bg-white', 'text-slate-800', 'shadow-sm'];
-
-        const botons = ['btn-pestanya-mitjana', 'btn-pestanya-examen', 'btn-pestanya-test'];
+        // 2. Apaguem els dos botons
+        const botons = ['btn-pestanya-mitjana', 'btn-pestanya-test'];
         botons.forEach(id => {
             const btn = document.getElementById(id);
             if(btn) {
-                btn.classList.remove(...btnClassesActiu);
-                btn.classList.add(...btnClassesInactiu);
+                btn.classList.remove('bg-white', 'text-slate-800', 'shadow-sm');
+                btn.classList.add('text-slate-500', 'hover:text-slate-800');
             }
         });
 
-        // Mostrar el mòdul que toca i pintar el seu botó
+        // 3. Encenguem la pestanya seleccionada
         if (pestanya === 'mitjana') {
             document.getElementById('modul-mitjana').classList.remove('hidden');
             const btn = document.getElementById('btn-pestanya-mitjana');
-            btn.classList.remove(...btnClassesInactiu);
-            btn.classList.add(...btnClassesActiu);
-        } else if (pestanya === 'examen') {
-            document.getElementById('modul-examen').classList.remove('hidden');
-            const btn = document.getElementById('btn-pestanya-examen');
-            btn.classList.remove(...btnClassesInactiu);
-            btn.classList.add(...btnClassesActiu);
+            btn.classList.remove('text-slate-500', 'hover:text-slate-800');
+            btn.classList.add('bg-white', 'text-slate-800', 'shadow-sm');
         } else if (pestanya === 'test') {
             document.getElementById('modul-test').classList.remove('hidden');
             const btn = document.getElementById('btn-pestanya-test');
-            btn.classList.remove(...btnClassesInactiu);
-            btn.classList.add(...btnClassesActiu);
+            btn.classList.remove('text-slate-500', 'hover:text-slate-800');
+            btn.classList.add('bg-white', 'text-slate-800', 'shadow-sm');
         }
     }
 };
 
-// Quan s'obre la web, carregar la primera pestanya per defecte
+// Quan la pàgina carrega, s'obre 'Mitjana' per defecte
 document.addEventListener('DOMContentLoaded', () => {
     appManager.canviarPestanya('mitjana');
 });
