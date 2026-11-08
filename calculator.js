@@ -93,10 +93,13 @@ const calculatorManager = {
         subText.innerHTML = plantilla;
     },
 
-    compartirNotaWhatsApp: async function() {
+        compartirNotaWhatsApp: async function() {
         const btnCompartir = document.getElementById('btn-compartir');
-        const textOriginal = btnCompartir.innerHTML;
-        btnCompartir.innerHTML = "Obrint WhatsApp... ⏳";
+        const idiomaActiu = localStorage.getItem('FinalMark_Idioma') || 'ca';
+        const dicc = translations[idiomaActiu] || translations['ca'];
+        
+        const textCarregant = dicc["msg-obrint-whatsapp"] || "Obrint WhatsApp... ⏳";
+        btnCompartir.innerHTML = textCarregant;
         
         try {
             const zonaCaptura = document.getElementById('zona-captura');
@@ -110,19 +113,20 @@ const calculatorManager = {
                         title: 'Nota FinalMark',
                         files: [fitxer]
                     });
-                    btnCompartir.innerHTML = textOriginal;
+                    btnCompartir.innerHTML = dicc["text-btn-compartir"] || "Compartir Resultat";
                 } else {
                     const nota = document.getElementById('resultat-text').innerText;
-                    const msg = `He tret un ${nota}! Calculat amb FinalMark.app`;
+                    const msg = idiomaActiu === 'en' ? `I got a ${nota}! Calculated with FinalMark.app` : (idiomaActiu === 'es' ? `¡He sacado un ${nota}! Calculado con FinalMark.app` : `He tret un ${nota}! Calculat amb FinalMark.app`);
                     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
-                    btnCompartir.innerHTML = textOriginal;
+                    btnCompartir.innerHTML = dicc["text-btn-compartir"] || "Compartir Resultat";
                 }
             });
         } catch (error) {
             const nota = document.getElementById('resultat-text').innerText;
-            const msg = `He tret un ${nota}! Calculat amb FinalMark.app`;
+            const msg = idiomaActiu === 'en' ? `I got a ${nota}! Calculated with FinalMark.app` : (idiomaActiu === 'es' ? `¡He sacado un ${nota}! Calculado con FinalMark.app` : `He tret un ${nota}! Calculat amb FinalMark.app`);
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
-            btnCompartir.innerHTML = textOriginal;
+            btnCompartir.innerHTML = dicc["text-btn-compartir"] || "Compartir Resultat";
         }
     }
+
 };
