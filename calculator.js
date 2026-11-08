@@ -1,5 +1,4 @@
 const calculatorManager = {
-    // ---- 1. MITJANA PONDERADA ----
     afegirFila: function() {
         const container = document.getElementById('files-container');
         const filaId = Date.now();
@@ -29,7 +28,6 @@ const calculatorManager = {
         const box = document.getElementById('resultat-box');
         const textNota = document.getElementById('resultat-text');
         const subText = document.getElementById('resultat-subtext');
-
         box.classList.remove('hidden');
 
         if (sumaPesos === 0) {
@@ -39,15 +37,14 @@ const calculatorManager = {
         }
 
         if (sumaPesos !== 100) {
-            subText.innerText = `Els percentatges sumen ${sumaPesos}%, no 100%. La nota final mostrada és proporcional.`;
             textNota.innerText = (sumaPonderada / (sumaPesos / 100)).toFixed(2);
+            subText.innerText = `Els percentatges sumen ${sumaPesos}%, no 100%. La nota final mostrada és proporcional.`;
         } else {
             textNota.innerText = sumaPonderada.toFixed(2);
-            subText.innerText = "Aquesta és la teva nota mitjana ponderada exacta tenint en compte els percentatges introduïts.";
+            subText.innerText = "Aquesta és la teva nota mitjana ponderada exacta.";
         }
     },
 
-    // ---- 2. CÀLCUL TIPUS TEST ----
     calcularTest: function() {
         const totalPreguntes = parseFloat(document.getElementById('test-total').value) || 0;
         const notaMaxima = parseFloat(document.getElementById('test-maxima').value) || 10;
@@ -69,7 +66,7 @@ const calculatorManager = {
         }
         if ((encerts + errors + blancs) > totalPreguntes) {
             textNota.innerText = "Error";
-            subText.innerText = "Has sumat més encerts, fallades i blancs que el total de preguntes de l'examen!";
+            subText.innerText = "Has posat més respostes que preguntes!";
             return;
         }
 
@@ -79,65 +76,43 @@ const calculatorManager = {
         const puntsEncerts = encerts * valorPregunta;
         const puntsPenalitzacio = errors * valorError;
         let notaFinal = puntsEncerts - puntsPenalitzacio;
-        
         if (notaFinal < 0) notaFinal = 0;
 
         textNota.innerText = notaFinal.toFixed(2);
-        subText.innerHTML = `
-            Cada pregunta encertada suma <strong>+${valorPregunta.toFixed(3)}</strong>.<br>
-            Cada error resta <strong>-${valorError.toFixed(3)}</strong>.<br><br>
-            Càlcul: Tens ${puntsEncerts.toFixed(2)} punts base i una penalització de -${puntsPenalitzacio.toFixed(2)} punts.
-        `;
+        subText.innerHTML = `Cada pregunta encertada suma <strong>+${valorPregunta.toFixed(3)}</strong>.<br>Cada error resta <strong>-${valorError.toFixed(3)}</strong>.`;
     },
 
-    // ---- 3. COMPARTIR PER WHATSAPP MITJANÇANT IMATGE ----
     compartirNotaWhatsApp: async function() {
         const btnCompartir = document.getElementById('btn-compartir');
         const textOriginal = btnCompartir.innerHTML;
-        
-        // Avisem que s'està generant
-        btnCompartir.innerHTML = "Generant imatge... ⏳";
+        btnCompartir.innerHTML = "Obrint WhatsApp... ⏳";
         
         try {
-            // Seleccionem només la caixa blanca neta amb els càlculs i el logo
             const zonaCaptura = document.getElementById('zona-captura');
+            const canvas = await html2canvas(zonaCaptura, { scale: 2 });
             
-            // Creem la imatge amb html2canvas
-            const canvas = await html2canvas(zonaCaptura, {
-                backgroundColor: "#ffffff",
-                scale: 2 // Fa que la foto tingui alta resolució
-            });
-
-            // Convertim el canvas en un arxiu d'imatge
             canvas.toBlob(async (blob) => {
                 const fitxer = new File([blob], "Nota-FinalMark.png", { type: "image/png" });
                 
-                // Mirem si el mòbil permet compartir arxius (ho fan gairebé tots els mòbils avui en dia)
                 if (navigator.canShare && navigator.canShare({ files: [fitxer] })) {
                     await navigator.share({
-                        title: 'La meva nota de FinalMark',
-                        text: 'Mira la nota que he tret! Calculat ràpid amb FinalMark.app',
+                        title: 'Nota FinalMark',
                         files: [fitxer]
                     });
-                    btnCompartir.innerHTML = "Compartit! ✅";
+                    btnCompartir.innerHTML = textOriginal;
                 } else {
-                    // Si el navegador és vell o s'està des de PC, descarreguem la foto
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = "Nota-FinalMark.png";
-                    a.click();
-                    alert("S'ha descarregat la foto de la nota als teus arxius! Ara la pots enviar per WhatsApp tranquil·lament.");
+                    // Fallback segur: Obre WhatsApp amb un missatge de text garantit.
+                    const nota = document.getElementById('resultat-text').innerText;
+                    const msg = `He tret un ${nota}! Calculat amb FinalMark.app`;
+                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
                     btnCompartir.innerHTML = textOriginal;
                 }
-                
-                // Restaurem el botó passats 3 segons
-                setTimeout(() => { btnCompartir.innerHTML = textOriginal; }, 3000);
             });
-
         } catch (error) {
-            console.error("Error al generar imatge:", error);
-            alert("No s'ha pogut generar la imatge. Revisa que tinguis connexió per carregar la llibreria.");
+            // Si estem bloquejats al PC, va cap a text segur directe.
+            const nota = document.getElementById('resultat-text').innerText;
+            const msg = `He tret un ${nota}! Calculat amb FinalMark.app`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
             btnCompartir.innerHTML = textOriginal;
         }
     }
