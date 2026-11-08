@@ -1,51 +1,33 @@
-// Gestor de perfil i sessió local (Sense servidors externs)
-class AuthManager {
-    obrirModal() {
+const authManager = {
+    obrirModal: function() {
         const modal = document.getElementById('auth-modal');
         if (modal) modal.classList.remove('hidden');
-    }
-
-    tancarModal() {
+    },
+    tancarModal: function() {
         const modal = document.getElementById('auth-modal');
         if (modal) modal.classList.add('hidden');
-    }
-
-    guardarUsuari() {
-        const input = document.getElementById('auth-email-input');
-        if (!input) return;
+    },
+    guardarUsuari: function() {
+        const emailInput = document.getElementById('auth-email-input');
         
-        const email = input.value.trim();
-        if (email && email.includes('@')) {
-            // Guardem localment al navegador sense fer peticions externes que donin error 401
-            localStorage.setItem('finalmark_user_email', email);
-            this.tancarModal();
-            this.verificarEstat();
+        if (emailInput && emailInput.value.includes('@')) {
+            // Guardem l'usuari de forma local
+            localStorage.setItem('FinalMark_Usuari', emailInput.value);
             
-            // Missatge de confirmació net
-            alert("Sessió iniciada correctament per a: " + email);
+            // Efecte visual prèmium per al botó
+            const btn = document.querySelector('#auth-modal button.bg-teal-700');
+            const textOriginal = btn.innerText;
+            btn.innerText = "Vinculat correctament! ✔️";
+            btn.classList.replace('bg-teal-700', 'bg-green-600');
+            
+            // Tanquem el modal després d'un segon i mig
+            setTimeout(() => {
+                this.tancarModal();
+                btn.innerText = textOriginal;
+                btn.classList.replace('bg-green-600', 'bg-teal-700');
+            }, 1500);
         } else {
-            alert("Si us plau, introdueix un correu electrònic vàlid.");
+            alert('Si us plau, introdueix un correu universitari o personal vàlid.');
         }
     }
-
-    verificarEstat() {
-        const email = localStorage.getItem('finalmark_user_email');
-        const container = document.getElementById('auth-header-container');
-
-        if (email && container) {
-            container.innerHTML = `
-                <div class="flex items-center space-x-2">
-                    <span class="text-xs bg-slate-100 text-teal-800 px-3 py-1.5 rounded-xl font-mono border border-slate-200">👤 ${email}</span>
-                    <button onclick="authManager.tancarSessio()" class="text-xs text-slate-400 hover:text-slate-600">Sortir</button>
-                </div>
-            `;
-        }
-    }
-
-    tancarSessio() {
-        localStorage.removeItem('finalmark_user_email');
-        location.reload();
-    }
-}
-
-window.authManager = new AuthManager();
+};
