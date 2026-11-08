@@ -2,13 +2,13 @@ const calculatorManager = {
     afegirFila: function() {
         const container = document.getElementById('files-container');
         const filaId = Date.now();
-        // AQUESTA ÉS LA FILA NOVA AMB DISSENY GRID (QUADRÍCULA)
+        // APLICANT PERCENTATGES FIXOS PERQUÈ NO ES PUGUIN ESCLAFAR
         const filaHTML = `
-            <div class="grid grid-cols-12 gap-2 items-center fila-nota w-full" id="fila-${filaId}">
-                <input type="text" placeholder="Nom (ex: Pràctica 1)" class="col-span-5 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs sm:text-sm w-full min-w-0">
-                <input type="number" placeholder="Nota" step="0.1" class="nota-input col-span-3 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs sm:text-sm w-full min-w-0">
-                <input type="number" placeholder="Pes %" step="1" class="pes-input col-span-3 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs sm:text-sm w-full min-w-0">
-                <button onclick="this.parentElement.remove()" class="col-span-1 text-red-400 hover:text-red-600 font-bold p-1 text-xl flex justify-center items-center">✕</button>
+            <div class="flex flex-col sm:flex-row gap-2 items-center fila-nota w-full" id="fila-${filaId}">
+                <input type="text" placeholder="Nom (ex: Pràctica 1)" class="w-full sm:w-[50%] bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-sm">
+                <input type="number" placeholder="Nota" step="0.1" class="nota-input w-full sm:w-[20%] bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-sm text-center">
+                <input type="number" placeholder="Pes %" step="1" class="pes-input w-full sm:w-[20%] bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-sm text-center">
+                <button onclick="this.parentElement.remove()" class="w-full sm:w-[10%] text-red-400 hover:text-red-600 font-bold p-2 text-xl flex justify-center items-center">✕</button>
             </div>
         `;
         container.insertAdjacentHTML('beforeend', filaHTML);
