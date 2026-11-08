@@ -1,124 +1,127 @@
-class CalculatorManager {
-    constructor() {
-        this.filesCount = 0;
-    }
-
-    afegirFila(nom = "", nota = "", pes = "") {
+const calculatorManager = {
+    // 1. Funcions de Mitjana Ponderada
+    afegirFila: function() {
         const container = document.getElementById('files-container');
-        if (!container) return;
-        
-        const idUnic = Date.now() + Math.random();
-        const placeholderText = (typeof languageManager !== 'undefined') ? languageManager.t('placeholderNom') : "Concepte";
-
-        const rowDiv = document.createElement('div');
-        rowDiv.className = "flex items-center gap-2 bg-slate-50/80 border border-slate-200/80 p-2.5 rounded-2xl transition hover:border-slate-300";
-        rowDiv.id = `fila-${idUnic}`;
-
-        rowDiv.innerHTML = `
-            <div class="flex-grow">
-                <input type="text" placeholder="${placeholderText}" value="${nom}" class="fila-nom w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 focus:outline-none focus:border-teal-500">
+        const filaId = Date.now();
+        const filaHTML = `
+            <div class="flex gap-2 items-center fila-nota" id="fila-${filaId}">
+                <input type="text" placeholder="Nom (ex: Pràctica 1)" class="flex-2 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-sm w-full">
+                <input type="number" placeholder="Nota" step="0.1" class="nota-input flex-1 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-sm w-full">
+                <input type="number" placeholder="Pes %" step="1" class="pes-input flex-1 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-sm w-full">
+                <button onclick="this.parentElement.remove()" class="text-red-400 hover:text-red-600 font-bold p-2 text-lg">✕</button>
             </div>
-            <div class="w-20 md:w-24">
-                <input type="number" step="0.01" min="0" max="10" placeholder="Nota /10" value="${nota}" class="fila-nota w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 focus:outline-none focus:border-teal-500 text-center font-mono">
-            </div>
-            <div class="w-20 md:w-24">
-                <input type="number" step="0.01" min="0" max="100" placeholder="Pes %" value="${pes}" class="fila-pes w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 focus:outline-none focus:border-teal-500 text-center font-mono">
-            </div>
-            <button onclick="calculatorManager.eliminarFila('${idUnic}')" class="text-slate-400 hover:text-rose-500 p-2 transition font-bold text-sm" title="Eliminar">&times;</button>
         `;
-        container.appendChild(rowDiv);
-        this.filesCount++;
-    }
+        container.insertAdjacentHTML('beforeend', filaHTML);
+    },
 
-    eliminarFila(id) {
-        const fila = document.getElementById(`fila-${id}`);
-        if (fila) {
-            fila.style.opacity = '0';
-            setTimeout(() => {
-                fila.remove();
-                this.filesCount--;
-            }, 150);
-        }
-    }
-
-    netejarFiles() {
-        const container = document.getElementById('files-container');
-        if (container) container.innerHTML = '';
-        this.filesCount = 0;
-    }
-
-    calcularMitjana() {
-        const notes = document.querySelectorAll('.fila-nota');
-        const pesos = document.querySelectorAll('.fila-pes');
+    calcularMitjana: function() {
+        const files = document.querySelectorAll('.fila-nota');
         let sumaPonderada = 0;
         let sumaPesos = 0;
 
-        for (let i = 0; i < notes.length; i++) {
-            const notaVal = parseFloat(notes[i].value);
-            const pesVal = parseFloat(pesos[i].value);
-
-            if (isNaN(notaVal) || isNaN(pesVal)) continue;
-
-            sumaPonderada += notaVal * (pesVal / 100);
-            sumaPesos += pesVal;
-        }
+        files.forEach(fila => {
+            const nota = parseFloat(fila.querySelector('.nota-input').value) || 0;
+            const pes = parseFloat(fila.querySelector('.pes-input').value) || 0;
+            sumaPonderada += nota * (pes / 100);
+            sumaPesos += pes;
+        });
 
         const box = document.getElementById('resultat-box');
-        const titol = document.getElementById('resultat-titol');
-        const text = document.getElementById('resultat-text');
-        const sub = document.getElementById('resultat-subtext');
-        
-        if (!box) return;
+        const textNota = document.getElementById('resultat-text');
+        const subText = document.getElementById('resultat-subtext');
+
         box.classList.remove('hidden');
 
         if (sumaPesos === 0) {
-            titol.innerText = "Avís";
-            text.innerText = "Incomplet";
-            sub.innerText = "Introdueix dades vàlides.";
+            textNota.innerText = "0.00";
+            subText.innerText = "Afegeix notes i percentatges per calcular.";
             return;
         }
 
-        let notaFinal = sumaPesos !== 100 ? sumaPonderada / (sumaPesos / 100) : sumaPonderada;
-        titol.innerText = (typeof languageManager !== 'undefined') ? languageManager.t('mitjanaFinal') : "Mitjana Ponderada Final";
-        text.innerText = notaFinal.toFixed(2) + " / 10";
-        sub.innerText = `Suma de pesos analitzats: ${sumaPesos}%. Càlcul realitzat amb claredat.`;
-    }
+        if (sumaPesos !== 100) {
+            subText.innerText = `Els percentatges sumen ${sumaPesos}%, no 100%. La nota es mostra proporcionalment.`;
+            textNota.innerText = (sumaPonderada / (sumaPesos / 100)).toFixed(2);
+        } else {
+            textNota.innerText = sumaPonderada.toFixed(2);
+            subText.innerText = "Aquesta és la teva nota mitjana ponderada exacta.";
+        }
+    },
 
-    calcularNotaInversa() {
-        const acum = parseFloat(document.getElementById('inv-acumulada').value);
-        const pesF = parseFloat(document.getElementById('inv-pes').value);
-        const obj = parseFloat(document.getElementById('inv-objectiu').value);
+    // 2. Funció Examen Invers
+    calcularNotaInversa: function() {
+        const notaAcumulada = parseFloat(document.getElementById('inv-acumulada').value) || 0;
+        const pesExamen = parseFloat(document.getElementById('inv-pes').value) || 0;
+        const notaObjectiu = parseFloat(document.getElementById('inv-objectiu').value) || 5;
 
         const box = document.getElementById('resultat-box');
-        const titol = document.getElementById('resultat-titol');
-        const text = document.getElementById('resultat-text');
-        const sub = document.getElementById('resultat-subtext');
-        
-        if (!box) return;
+        const textNota = document.getElementById('resultat-text');
+        const subText = document.getElementById('resultat-subtext');
         box.classList.remove('hidden');
 
-        if (isNaN(acum) || isNaN(pesF) || isNaN(obj)) {
-            titol.innerText = "Avís";
-            text.innerText = "Camps buits";
-            sub.innerText = "Omple tots els valors.";
+        if (pesExamen <= 0 || pesExamen > 100) {
+            textNota.innerText = "-";
+            subText.innerText = "Posa un percentatge vàlid per a l'examen.";
             return;
         }
 
-        const pF = pesF / 100;
-        const nec = (obj - (acum * (1 - pF))) / pF;
-        titol.innerText = (typeof languageManager !== 'undefined') ? languageManager.t('notaRequerida') : "Nota Requerida Examen Final";
+        const pesAcumulat = 100 - pesExamen;
+        const partAcumulada = notaAcumulada * (pesAcumulat / 100);
+        const puntsFaltants = notaObjectiu - partAcumulada;
+        const notaNecessaria = puntsFaltants / (pesExamen / 100);
 
-        if (nec <= 0) {
-            text.innerText = "0.00 / 10";
-            sub.innerText = "Objectiu ja assolit anteriorment.";
-        } else if (nec > 10) {
-            text.innerText = nec.toFixed(2) + " / 10";
-            sub.innerText = "Matemàticament superior a 10.";
+        if (notaNecessaria > 10) {
+            textNota.innerText = notaNecessaria.toFixed(2);
+            subText.innerHTML = "Impossible. Necessites més d'un 10 a l'examen.";
+        } else if (notaNecessaria <= 0) {
+            textNota.innerText = "0.00";
+            subText.innerHTML = "Ja tens l'objectiu superat només amb l'avaluació continuada!";
         } else {
-            text.innerText = nec.toFixed(2) + " / 10";
-            sub.innerText = `Necessites un ${nec.toFixed(2)} a l'examen final.`;
+            textNota.innerText = notaNecessaria.toFixed(2);
+            subText.innerHTML = `Necessites un <strong>${notaNecessaria.toFixed(2)}</strong> a l'examen per arribar al ${notaObjectiu}.`;
         }
-    }
-}
+    },
 
-window.calculatorManager = new CalculatorManager();
+    // 3. NOVA Funció Tipus Test
+    calcularTest: function() {
+        const totalPreguntes = parseFloat(document.getElementById('test-total').value) || 0;
+        const notaMaxima = parseFloat(document.getElementById('test-maxima').value) || 10;
+        const penalitzacioRatio = parseFloat(document.getElementById('test-penalitzacio').value) || 0;
+        
+        const encerts = parseFloat(document.getElementById('test-encerts').value) || 0;
+        const errors = parseFloat(document.getElementById('test-errors').value) || 0;
+        const blancs = parseFloat(document.getElementById('test-blancs').value) || 0;
+
+        const box = document.getElementById('resultat-box');
+        const textNota = document.getElementById('resultat-text');
+        const subText = document.getElementById('resultat-subtext');
+        box.classList.remove('hidden');
+
+        if (totalPreguntes <= 0) {
+            textNota.innerText = "-";
+            subText.innerText = "El test ha de tenir preguntes.";
+            return;
+        }
+
+        if ((encerts + errors + blancs) > totalPreguntes) {
+            textNota.innerText = "Error";
+            subText.innerText = "Tens més encerts, fallades i blancs que preguntes totals!";
+            return;
+        }
+
+        const valorPregunta = notaMaxima / totalPreguntes;
+        const valorError = valorPregunta * penalitzacioRatio;
+        
+        const puntsEncerts = encerts * valorPregunta;
+        const puntsPenalitzacio = errors * valorError;
+        let notaFinal = puntsEncerts - puntsPenalitzacio;
+        
+        if (notaFinal < 0) notaFinal = 0; // Evitar notes negatives
+
+        textNota.innerText = notaFinal.toFixed(2);
+        subText.innerHTML = `
+            Cada encert et suma <strong>+${valorPregunta.toFixed(3)}</strong> punts.<br>
+            Cada error et resta <strong>-${valorError.toFixed(3)}</strong> punts.<br>
+            Base: ${puntsEncerts.toFixed(2)} punts | Penalització: -${puntsPenalitzacio.toFixed(2)} punts.
+        `;
+    }
+};
