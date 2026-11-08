@@ -3,73 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privadesa | FinalMark</title>
+    <title>FinalMark | Gestor de Notes</title>
     <link rel="icon" type="image/png" href="favicon.png">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="bg-[#f8fafc] text-slate-700 font-sans antialiased min-h-screen flex flex-col selection:bg-teal-100 selection:text-teal-800">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5010786975330636" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-    <header class="w-full bg-white border-b border-slate-200 py-4 shadow-sm">
-        <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#f8fafc] text-slate-700 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-teal-100 selection:text-teal-800">
+
+    <header class="w-full bg-white border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 text-center max-h-[90px] overflow-hidden flex justify-center items-center">
+            <ins class="adsbygoogle" 
+                 style="display:block; width:100%; height:90px;" 
+                 data-ad-client="ca-pub-5010786975330636" 
+                 data-ad-slot="auto" 
+                 data-ad-format="horizontal" 
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center border-t border-slate-100">
             <a href="index.html" class="flex items-center">
                 <img src="logo.png" alt="FinalMark Logo" class="h-8 md:h-10 w-auto object-contain">
             </a>
-            
-            <div class="flex items-center space-x-4 text-sm">
-                <!-- Selector d'idioma connectat -->
-                <select id="language-selector" onchange="languageManager.canviarIdioma(this.value)" class="bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-xs font-medium text-slate-600 focus:outline-none focus:border-teal-500 cursor-pointer">
+            <div class="flex items-center space-x-3">
+                <select id="language-selector" onchange="languageManager.canviarIdioma(this.value)" class="bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 text-xs font-medium text-slate-600 focus:outline-none focus:border-teal-500 cursor-pointer">
                     <option value="ca">Català</option>
                     <option value="es">Español</option>
                     <option value="en">English</option>
                 </select>
-                <a href="index.html" id="text-back-calc" class="text-teal-700 hover:text-teal-800 font-medium transition flex items-center gap-1">
-                    ← Tornar a la calculadora
-                </a>
+                <div id="auth-header-container">
+                    <button onclick="authManager.obrirModal()" id="text-compte" class="bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold px-3.5 py-2 rounded-xl transition border border-slate-200">
+                        El meu compte
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="max-w-3xl mx-auto px-6 py-12 flex-grow w-full">
+    <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
         
-        <div class="mb-10">
-            <h1 id="priv-title" class="text-3xl font-bold text-slate-900 tracking-tight">Política de Privadesa</h1>
-            <p id="priv-updated" class="text-sm text-slate-400 mt-2">Última actualització: Novembre 2026</p>
+        <div class="text-center space-y-3">
+            <span id="text-tag" class="inline-block text-xs font-bold uppercase tracking-wider bg-teal-50 text-teal-800 px-3.5 py-1 rounded-full border border-teal-200">
+                Eina de Supervivència Universitària
+            </span>
+            <h2 id="text-title" class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+                calcula la teva nota
+            </h2>
         </div>
 
-        <div class="space-y-8 text-slate-600 leading-relaxed">
+        <div class="flex bg-slate-200/70 p-1 rounded-2xl max-w-sm mx-auto border border-slate-200">
+            <button onclick="appManager.canviarPestanya('mitjana')" id="btn-pestanya-mitjana" class="flex-1 py-2 px-2 rounded-xl text-xs font-semibold transition bg-white text-slate-800 shadow-sm">
+                Mitjana Ponderada
+            </button>
+            <button onclick="appManager.canviarPestanya('test')" id="btn-pestanya-test" class="flex-1 py-2 px-2 rounded-xl text-xs font-semibold transition text-slate-500 hover:text-slate-800">
+                Càlcul Tipus Test
+            </button>
+        </div>
+
+        <div class="bg-white border border-slate-200/90 rounded-3xl p-6 md:p-8 shadow-xl shadow-slate-100/50 space-y-6">
             
-            <section>
-                <h2 id="priv-s1-title" class="text-lg font-bold text-slate-800 mb-3">1. Informació general i responsabilitat</h2>
-                <p id="priv-s1-text">A FinalMark ens prenem molt seriosament la privadesa dels nostres usuaris. Com a eina dissenyada per ajudar els estudiants universitaris, el nostre objectiu és oferir un servei eficient, clar i segur. Aquesta política descriu quines dades tractem, com les gestionem i quins són els teus drets com a usuari en utilitzar la nostra aplicació web.</p>
-            </section>
+            <div id="modul-mitjana" class="space-y-5 block">
+                <div class="flex justify-between items-center pb-2 border-b border-slate-100">
+                    <h3 id="text-desglossament" class="text-xs font-bold text-slate-500 uppercase tracking-wider">Avaluació Continuada</h3>
+                    <button onclick="storageManager.guardarEstatActual()" id="text-desar" class="text-xs text-teal-600 hover:text-teal-800 font-bold bg-teal-50 px-3 py-1 rounded-lg">
+                        Desar Assignatura 💾
+                    </button>
+                </div>
+                <div id="files-container" class="space-y-3"></div>
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button onclick="calculatorManager.afegirFila()" class="flex-1 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-medium py-3 rounded-2xl text-xs transition flex items-center justify-center space-x-2">
+                        <span class="text-teal-600 font-bold text-lg leading-none">+</span>
+                        <span id="text-afegir">Afegir pràctica o treball</span>
+                    </button>
+                    <button onclick="calculatorManager.calcularMitjana()" id="text-calcular" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-medium py-3 rounded-2xl text-xs transition shadow-md">
+                        Calcular Mitjana
+                    </button>
+                </div>
+            </div>
 
-            <section>
-                <h2 id="priv-s2-title" class="text-lg font-bold text-slate-800 mb-3">2. Dades emmagatzemades localment (LocalStorage)</h2>
-                <p id="priv-s2-text1">FinalMark no utilitza servidors externs complexos ni bases de dades al núvol per guardar la teva informació acadèmica. Totes les dades que introdueixes a l'aplicació (com noms d'assignatures, qualificacions i percentatges d'avaluació) s'emmagatzemen exclusivament de manera local al teu propi dispositiu (ordinador, tauleta o telèfon mòbil) mitjançant la tecnologia LocalStorage del teu navegador.</p>
-                <p id="priv-s2-text2" class="mt-2">Això significa que des de FinalMark no tenim accés a les teves notes, no les recopilem, no les llegim i no les compartim amb tercers. El control total de la informació és teu. Si esborres les dades de memòria cau (catxé) del teu navegador, la teva informació acadèmica s'eliminarà permanentment.</p>
-            </section>
+            <div id="modul-test" class="space-y-5 hidden">
+                <div class="space-y-4">
+                    <h3 id="text-test-titol" class="text-xs font-bold text-slate-500 uppercase tracking-wider pb-2 border-b border-slate-100">
+                        Càlcul d'Examen Tipus Test
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                        <div class="space-y-1">
+                            <label id="lbl-test-total" class="block text-xs font-medium text-slate-600">Total preguntes</label>
+                            <input type="number" id="test-total" value="40" min="1" class="w-full bg-white border border-slate-200 rounded-xl p-3 text-sm text-slate-800 focus:outline-none focus:border-teal-500 font-mono">
+                        </div>
+                        <div class="space-y-1">
+                            <label id="lbl-test-maxima" class="block text-xs font-medium text-slate-600">Puntuació màxima</label>
+                            <input type="number" id="test-maxima" value="10" step="0.1" class="w-full bg-white border border-slate-200 rounded-xl p-3 text-sm text-slate-800 focus:outline-none focus:border-teal-500 font-mono">
+                        </div>
+                        <div class="space-y-1">
+                            <label id="lbl-test-penalitzacio" class="block text-xs font-medium text-slate-600">Penalització</label>
+                            <select id="test-penalitzacio" class="w-full bg-white border border-slate-200 rounded-xl p-3 text-sm text-slate-800 focus:outline-none focus:border-teal-500">
+                                <option id="opt-pen-0" value="0">No resta res</option>
+                                <option id="opt-pen-1" value="0.25" selected>Resta 1/4 (0.25)</option>
+                                <option id="opt-pen-2" value="0.3333">Resta 1/3 (0.33)</option>
+                                <option id="opt-pen-3" value="0.5">Resta 1/2 (0.5)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 pt-2">
+                        <div class="space-y-1">
+                            <label id="lbl-test-encerts" class="block text-xs font-medium text-green-600">Encertades</label>
+                            <input type="number" id="test-encerts" value="0" min="0" class="w-full bg-green-50 border border-green-200 rounded-xl p-3 text-sm text-slate-800 focus:outline-none focus:border-green-500 font-mono text-center">
+                        </div>
+                        <div class="space-y-1">
+                            <label id="lbl-test-errors" class="block text-xs font-medium text-red-600">Fallades</label>
+                            <input type="number" id="test-errors" value="0" min="0" class="w-full bg-red-50 border border-red-200 rounded-xl p-3 text-sm text-slate-800 focus:outline-none focus:border-red-500 font-mono text-center">
+                        </div>
+                        <div class="space-y-1">
+                            <label id="lbl-test-blancs" class="block text-xs font-medium text-slate-400">En blanc</label>
+                            <input type="number" id="test-blancs" value="0" min="0" class="w-full bg-slate-100 border border-slate-200 rounded-xl p-3 text-sm text-slate-500 focus:outline-none focus:border-slate-400 font-mono text-center">
+                        </div>
+                    </div>
+                    <button onclick="calculatorManager.calcularTest()" id="btn-calcular-test" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium py-3.5 rounded-2xl text-xs transition shadow-md">
+                        Calcular Nota del Test
+                    </button>
+                </div>
+            </div>
 
-            <section>
-                <h2 id="priv-s3-title" class="text-lg font-bold text-slate-800 mb-3">3. Ús de Publicitat (Google AdSense)</h2>
-                <p id="priv-s3-text1">Per poder mantenir el servei de FinalMark completament gratuït per a tots els estudiants, la plataforma utilitza Google AdSense per mostrar anuncis publicitaris.</p>
-            </section>
-
-            <section>
-                <h2 id="priv-s4-title" class="text-lg font-bold text-slate-800 mb-3">4. Contacte</h2>
-                <p id="priv-s4-text1">Si tens qualsevol dubte sobre aquesta política de privadesa, el funcionament tècnic de l'emmagatzematge de dades, o vols fer algun suggeriment de millora per a l'aplicació, estem a la teva disposició per escoltar-te.</p>
-            </section>
-
+            <!-- RESULTAT -->
+            <div id="resultat-box" class="hidden flex flex-col items-center mt-6">
+                <div id="zona-captura" class="bg-white border-2 border-teal-100 rounded-2xl p-6 text-center shadow-sm w-full max-w-sm">
+                    <div class="text-[10px] text-slate-400 font-bold tracking-widest mb-3">FINALMARK.APP</div>
+                    <span id="text-resultat-titol" class="text-xs text-teal-700 uppercase tracking-wider font-bold">Nota Resultant</span>
+                    <h3 id="resultat-text" class="text-5xl font-bold text-teal-900 tracking-tight my-2">-</h3>
+                    <p id="resultat-subtext" class="text-sm text-slate-600 mt-3 leading-relaxed font-medium"></p>
+                </div>
+                
+                <button id="btn-compartir" onclick="calculatorManager.compartirNotaWhatsApp()" class="mt-5 w-full max-w-sm bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    <span id="text-btn-compartir">Compartir Resultat</span>
+                </button>
+            </div>
         </div>
     </main>
 
-    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 w-full mt-auto">
+    <footer class="bg-white border-t border-slate-200 py-6 mt-10 text-center text-xs text-slate-500 space-y-2 w-full">
         <p id="text-footer" class="font-medium">&copy; FinalMark 2026 - Desenvolupat per a estudiants</p>
+        <div>
+            <a href="privadesa.html" id="text-privadesa" class="hover:text-teal-700 font-bold transition text-slate-600">Política de Privadesa</a>
+        </div>
     </footer>
 
-    <!-- Scripts necessaris per canviar d'idioma en aquesta pàgina -->
+    <div id="auth-modal" class="fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white border border-slate-200 rounded-3xl max-w-md w-full p-6 md:p-8 shadow-2xl space-y-5 relative">
+            <div class="flex justify-between items-center">
+                <h3 id="text-modal-title" class="text-lg font-bold text-slate-800">Guarda les teves assignatures</h3>
+                <button onclick="authManager.tancarModal()" class="text-slate-400 hover:text-slate-600 font-bold text-xl">&times;</button>
+            </div>
+            <p id="text-modal-desc" class="text-sm text-slate-500 leading-relaxed">Vincula el teu correu per no perdre les dades.</p>
+            <div class="space-y-4">
+                <input type="email" id="auth-email-input" placeholder="estudiant@uab.cat" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-800 focus:outline-none focus:border-teal-500">
+                <button onclick="authManager.guardarUsuari()" id="text-btn-sync" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 rounded-xl text-sm transition shadow-sm">
+                    Sincronitzar
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="translations.js"></script>
     <script src="language.js"></script>
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+    <script src="storage.js"></script>
+    <script src="calculator.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
