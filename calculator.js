@@ -2,12 +2,13 @@ const calculatorManager = {
     afegirFila: function() {
         const container = document.getElementById('files-container');
         const filaId = Date.now();
+        // AQUESTA ÉS LA FILA NOVA AMB DISSENY GRID (QUADRÍCULA)
         const filaHTML = `
-            <div class="flex gap-2 items-center fila-nota" id="fila-${filaId}">
-                <input type="text" placeholder="Nom (ex: Pràctica 1)" class="flex-2 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-sm w-full">
-                <input type="number" placeholder="Nota" step="0.1" class="nota-input flex-1 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-sm w-full">
-                <input type="number" placeholder="Pes %" step="1" class="pes-input flex-1 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-sm w-full">
-                <button onclick="this.parentElement.remove()" class="text-red-400 hover:text-red-600 font-bold p-2 text-lg">✕</button>
+            <div class="grid grid-cols-12 gap-2 items-center fila-nota w-full" id="fila-${filaId}">
+                <input type="text" placeholder="Nom (ex: Pràctica 1)" class="col-span-5 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs sm:text-sm w-full min-w-0">
+                <input type="number" placeholder="Nota" step="0.1" class="nota-input col-span-3 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs sm:text-sm w-full min-w-0">
+                <input type="number" placeholder="Pes %" step="1" class="pes-input col-span-3 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs sm:text-sm w-full min-w-0">
+                <button onclick="this.parentElement.remove()" class="col-span-1 text-red-400 hover:text-red-600 font-bold p-1 text-xl flex justify-center items-center">✕</button>
             </div>
         `;
         container.insertAdjacentHTML('beforeend', filaHTML);
@@ -101,7 +102,6 @@ const calculatorManager = {
                     });
                     btnCompartir.innerHTML = textOriginal;
                 } else {
-                    // Fallback segur: Obre WhatsApp amb un missatge de text garantit.
                     const nota = document.getElementById('resultat-text').innerText;
                     const msg = `He tret un ${nota}! Calculat amb FinalMark.app`;
                     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
@@ -109,7 +109,6 @@ const calculatorManager = {
                 }
             });
         } catch (error) {
-            // Si estem bloquejats al PC, va cap a text segur directe.
             const nota = document.getElementById('resultat-text').innerText;
             const msg = `He tret un ${nota}! Calculat amb FinalMark.app`;
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
