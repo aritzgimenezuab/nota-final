@@ -30,22 +30,21 @@ const calculatorManager = {
         const subText = document.getElementById('resultat-subtext');
         box.classList.remove('hidden');
 
-        // Obtenim l'idioma actual del navegador/selector
         const idiomaActiu = localStorage.getItem('FinalMark_Idioma') || 'ca';
         const dicc = translations[idiomaActiu] || translations['ca'];
 
         if (sumaPesos === 0) {
             textNota.innerText = "0.00";
-            subText.innerText = dicc["msg-sense-notes"] || "Afegeix notes per calcular.";
+            subText.innerText = dicc["msg-sense-notes"];
             return;
         }
 
         if (sumaPesos !== 100) {
             textNota.innerText = (sumaPonderada / (sumaPesos / 100)).toFixed(2);
-            subText.innerText = dicc["msg-mitjana-proporcional"] || "Els percentatges no sumen 100%.";
+            subText.innerText = dicc["msg-mitjana-proporcional"];
         } else {
             textNota.innerText = sumaPonderada.toFixed(2);
-            subText.innerText = dicc["msg-mitjana-exacta"] || "Aquesta és la teva nota mitjana ponderada exacta.";
+            subText.innerText = dicc["msg-mitjana-exacta"];
         }
     },
 
@@ -63,14 +62,17 @@ const calculatorManager = {
         const subText = document.getElementById('resultat-subtext');
         box.classList.remove('hidden');
 
+        const idiomaActiu = localStorage.getItem('FinalMark_Idioma') || 'ca';
+        const dicc = translations[idiomaActiu] || translations['ca'];
+
         if (totalPreguntes <= 0) {
             textNota.innerText = "-";
-            subText.innerText = "Error: El test ha de tenir preguntes.";
+            subText.innerText = dicc["msg-test-error-preguntes"];
             return;
         }
         if ((encerts + errors + blancs) > totalPreguntes) {
             textNota.innerText = "Error";
-            subText.innerText = "Has posat més respostes que preguntes!";
+            subText.innerText = dicc["msg-test-error-massa"];
             return;
         }
 
@@ -83,7 +85,12 @@ const calculatorManager = {
         if (notaFinal < 0) notaFinal = 0;
 
         textNota.innerText = notaFinal.toFixed(2);
-        subText.innerHTML = `Cada pregunta encertada suma <strong>+${valorPregunta.toFixed(3)}</strong>.<br>Cada error resta <strong>-${valorError.toFixed(3)}</strong>.`;
+        
+        // Plantilla traduïda dinàmicament
+        let plantilla = dicc["msg-test-detall"] || "Cada pregunta encertada suma +{valEncert}.<br>Cada error resta -{valError}.";
+        plantilla = plantilla.replace("{valEncert}", valorPregunta.toFixed(3)).replace("{valError}", valorError.toFixed(3));
+        
+        subText.innerHTML = plantilla;
     },
 
     compartirNotaWhatsApp: async function() {
