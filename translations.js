@@ -29,19 +29,23 @@ const translations = {
         "text-modal-desc": "Vincula el teu correu per no perdre les dades.",
         "text-btn-sync": "Sincronitzar",
         
-        // --- TEXTOS DE LA POLÍTICA DE PRIVADESA ---
+        // --- MISSATGES DE RESULTAT TRaduïBLES ---
+        "msg-mitjana-exacta": "Aquesta és la teva nota mitjana ponderada exacta.",
+        "msg-mitjana-proporcional": "Els percentatges no sumen 100%. La nota final mostrada és proporcional.",
+        "msg-sense-notes": "Afegeix notes per calcular.",
+
+        // --- POLÍTICA DE PRIVADESA ---
         "text-back-calc": "← Tornar a la calculadora",
         "priv-title": "Política de Privadesa",
         "priv-updated": "Última actualització: Novembre 2026",
         "priv-s1-title": "1. Informació general i responsabilitat",
-        "priv-s1-text": "A FinalMark ens prenem molt seriosament la privadesa dels nostres usuaris. Com a eina dissenyada per ajudar els estudiants universitaris, el nostre objectiu és oferir un servei eficient, clar i segur. Aquesta política descriu quines dades tractem, com les gestionem i quins són els teus drets com a usuari en utilitzar la nostra aplicació web.",
+        "priv-s1-text": "A FinalMark ens prenem molt seriosament la privadesa dels nostres usuaris.",
         "priv-s2-title": "2. Dades emmagatzemades localment (LocalStorage)",
-        "priv-s2-text1": "FinalMark no utilitza servidors externs complexos ni bases de dades al núvol per guardar la teva informació acadèmica. Totes les dades que introdueixes a l'aplicació (com noms d'assignatures, qualificacions i percentatges d'avaluació) s'emmagatzemen exclusivament de manera local al teu propi dispositiu (ordinador, tauleta o telèfon mòbil) mitjançant la tecnologia LocalStorage del teu navegador.",
-        "priv-s2-text2": "Això significa que des de FinalMark no tenim accés a les teves notes, no les recopilem, no les llegim i no les compartim amb tercers. El control total de la informació és teu. Si esborres les dades de memòria cau (catxé) del teu navegador, la teva informació acadèmica s'eliminarà permanentment.",
+        "priv-s2-text1": "FinalMark no utilitza servidors externs complexos. Totes les dades s'emmagatzemen exclusivament de manera local al teu dispositiu.",
         "priv-s3-title": "3. Ús de Publicitat (Google AdSense)",
-        "priv-s3-text1": "Per poder mantenir el servei de FinalMark completament gratuït per a tots els estudiants, la plataforma utilitza Google AdSense per mostrar anuncis publicitaris.",
+        "priv-s3-text1": "Per poder mantenir el servei gratuït, utilitzem Google AdSense per mostrar anuncis publicitaris.",
         "priv-s4-title": "4. Contacte",
-        "priv-s4-text1": "Si tens qualsevol dubte sobre aquesta política de privadesa, el funcionament tècnic de l'emmagatzematge de dades, o vols fer algun suggeriment de millora per a l'aplicació, estem a la teva disposició per escoltar-te."
+        "priv-s4-text1": "Si tens qualsevol dubte sobre aquesta política, pots posar-te en contacte amb nosaltres."
     },
     es: {
         "text-tag": "Herramienta de Supervivencia Universitaria",
@@ -73,19 +77,23 @@ const translations = {
         "text-modal-desc": "Vincula tu correo para no perder los datos.",
         "text-btn-sync": "Sincronizar",
 
-        // --- TEXTOS DE LA POLÍTICA DE PRIVACIDAD ---
+        // --- MISSATGES DE RESULTAT TRaduïBLES ---
+        "msg-mitjana-exacta": "Esta es tu nota media ponderada exacta.",
+        "msg-mitjana-proporcional": "Los porcentajes no suman 100%. La nota final mostrada es proporcional.",
+        "msg-sense-notes": "Añade notas para calcular.",
+
+        // --- POLÍTICA DE PRIVACIDAD ---
         "text-back-calc": "← Volver a la calculadora",
         "priv-title": "Política de Privacidad",
         "priv-updated": "Última actualización: Noviembre 2026",
         "priv-s1-title": "1. Información general y responsabilidad",
-        "priv-s1-text": "En FinalMark nos tomamos muy en serio la privacidad de nuestros usuarios. Como herramienta diseñada para ayudar a estudiantes universitarios, nuestro objetivo es ofrecer un servicio eficiente, claro y seguro. Esta política describe qué datos tratamos, cómo los gestionamos y cuáles son tus derechos como usuario al utilizar nuestra aplicación web.",
+        "priv-s1-text": "En FinalMark nos tomamos muy en serio la privacidad de nuestros usuarios.",
         "priv-s2-title": "2. Datos almacenados localmente (LocalStorage)",
-        "priv-s2-text1": "FinalMark no utiliza servidores externos complejos ni bases de datos en la nube para guardar tu información académica. Todos los datos que introduces en la aplicación (como nombres de asignaturas, calificaciones y porcentajes de evaluación) se almacenan exclusivamente de manera local en tu propio dispositivo (ordenador, tablet o teléfono móvil) mediante la tecnología LocalStorage de tu navegador.",
-        "priv-s2-text2": "Esto significa que desde FinalMark no tenemos acceso a tus notas, no las recopilamos, no las leemos y no las compartimos con terceros. El control total de la información es tuyo. Si borras los datos de la memoria caché de tu navegador, tu información académica se eliminará permanentemente.",
+        "priv-s2-text1": "FinalMark no utiliza servidores externos complejos. Todos los datos se almacenan exclusivamente de manera local en tu dispositivo.",
         "priv-s3-title": "3. Uso de Publicidad (Google AdSense)",
-        "priv-s3-text1": "Para poder mantener el servicio de FinalMark completamente gratuito para todos los estudiantes, la plataforma utiliza Google AdSense para mostrar anuncios publicitarios.",
+        "priv-s3-text1": "Para poder mantener el servicio gratuito, utilizamos Google AdSense para mostrar anuncios publicitarios.",
         "priv-s4-title": "4. Contacto",
-        "priv-s4-text1": "Si tienes cualquier duda sobre esta política de privacidad, el funcionamiento técnico del almacenamiento de datos, o quieres hacer alguna sugerencia de mejora para la aplicación, estamos a tu disposición para escucharte."
+        "priv-s4-text1": "Si tienes cualquier duda sobre esta política, puedes ponerte en contacto con nosotros."
     },
     en: {
         "text-tag": "University Survival Tool",
@@ -117,18 +125,22 @@ const translations = {
         "text-modal-desc": "Link your email so you don't lose your data.",
         "text-btn-sync": "Sync",
 
-        // --- TEXTOS DE LA POLÍTICA DE PRIVACIDAD ---
+        // --- MISSATGES DE RESULTAT TRaduïBLES ---
+        "msg-mitjana-exacta": "This is your exact weighted average grade.",
+        "msg-mitjana-proporcional": "Percentages do not add up to 100%. The final grade shown is proportional.",
+        "msg-sense-notes": "Add grades to calculate.",
+
+        // --- PRIVACY POLICY ---
         "text-back-calc": "← Back to calculator",
         "priv-title": "Privacy Policy",
         "priv-updated": "Last updated: November 2026",
         "priv-s1-title": "1. General information and responsibility",
-        "priv-s1-text": "At FinalMark, we take our users' privacy very seriously. As a tool designed to help university students, our goal is to offer an efficient, clear, and secure service. This policy describes what data we process, how we manage it, and what your rights are as a user when using our web application.",
+        "priv-s1-text": "At FinalMark, we take our users' privacy very seriously.",
         "priv-s2-title": "2. Locally stored data (LocalStorage)",
-        "priv-s2-text1": "FinalMark does not use complex external servers or cloud databases to save your academic information. All the data you enter into the application (such as subject names, grades, and evaluation percentages) is stored exclusively locally on your own device (computer, tablet, or mobile phone) using your browser's LocalStorage technology.",
-        "priv-s2-text2": "This means that at FinalMark we do not have access to your grades, we do not collect them, read them, or share them with third parties. You have total control of the information. If you clear your browser's cache data, your academic information will be permanently deleted.",
+        "priv-s2-text1": "FinalMark does not use complex external servers. All data is stored exclusively locally on your device.",
         "priv-s3-title": "3. Use of Advertising (Google AdSense)",
-        "priv-s3-text1": "In order to keep the FinalMark service completely free for all students, the platform uses Google AdSense to display advertisements.",
+        "priv-s3-text1": "In order to keep the service free, we use Google AdSense to display advertisements.",
         "priv-s4-title": "4. Contact",
-        "priv-s4-text1": "If you have any questions about this privacy policy, the technical operation of data storage, or if you want to make a suggestion to improve the application, we are at your disposal to listen."
+        "priv-s4-text1": "If you have any questions about this policy, you can contact us."
     }
 };
