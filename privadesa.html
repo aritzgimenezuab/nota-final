@@ -18,6 +18,7 @@
             </a>
             
             <div class="flex items-center space-x-4 text-sm">
+                <!-- Selector d'idioma connectat -->
                 <select id="language-selector" onchange="languageManager.canviarIdioma(this.value)" class="bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-xs font-medium text-slate-600 focus:outline-none focus:border-teal-500 cursor-pointer">
                     <option value="ca">Català</option>
                     <option value="es">Español</option>
@@ -38,22 +39,28 @@
         </div>
 
         <div class="space-y-8 text-slate-600 leading-relaxed">
+            
             <section>
                 <h2 id="priv-s1-title" class="text-lg font-bold text-slate-800 mb-3">1. Informació general i responsabilitat</h2>
-                <p id="priv-s1-text">A FinalMark ens prenem molt seriosament la privadesa dels nostres usuaris. Com a eina dissenyada per ajudar els estudiants universitaris, el nostre objectiu és oferir un servei eficient, clar i segur.</p>
+                <p id="priv-s1-text">A FinalMark ens prenem molt seriosament la privadesa dels nostres usuaris. Com a eina dissenyada per ajudar els estudiants universitaris, el nostre objectiu és oferir un servei eficient, clar i segur. Aquesta política descriu quines dades tractem, com les gestionem i quins són els teus drets com a usuari en utilitzar la nostra aplicació web.</p>
             </section>
+
             <section>
                 <h2 id="priv-s2-title" class="text-lg font-bold text-slate-800 mb-3">2. Dades emmagatzemades localment (LocalStorage)</h2>
-                <p id="priv-s2-text1">FinalMark no utilitza servidors externs complexos. Totes les dades s'emmagatzemen exclusivament de manera local al teu dispositiu mitjançant LocalStorage.</p>
+                <p id="priv-s2-text1">FinalMark no utilitza servidors externs complexos ni bases de dades al núvol per guardar la teva informació acadèmica. Totes les dades que introdueixes a l'aplicació (com noms d'assignatures, qualificacions i percentatges d'avaluació) s'emmagatzemen exclusivament de manera local al teu propi dispositiu (ordinador, tauleta o telèfon mòbil) mitjançant la tecnologia LocalStorage del teu navegador.</p>
+                <p id="priv-s2-text2" class="mt-2">Això significa que des de FinalMark no tenim accés a les teves notes, no les recopilem, no les llegim i no les compartim amb tercers. El control total de la informació és teu. Si esborres les dades de memòria cau (catxé) del teu navegador, la teva informació acadèmica s'eliminarà permanentment.</p>
             </section>
+
             <section>
                 <h2 id="priv-s3-title" class="text-lg font-bold text-slate-800 mb-3">3. Ús de Publicitat (Google AdSense)</h2>
-                <p id="priv-s3-text1">Per poder mantenir el servei gratuït, utilitzem Google AdSense per mostrar anuncis.</p>
+                <p id="priv-s3-text1">Per poder mantenir el servei de FinalMark completament gratuït per a tots els estudiants, la plataforma utilitza Google AdSense per mostrar anuncis publicitaris. Google utilitza galetes (cookies) per publicar anuncis basats en les visites anteriors dels usuaris a aquest lloc web o a altres llocs d'Internet.</p>
             </section>
+
             <section>
                 <h2 id="priv-s4-title" class="text-lg font-bold text-slate-800 mb-3">4. Contacte</h2>
-                <p id="priv-s4-text1">Si tens qualsevol dubte sobre aquesta política, pots posar-te en contacte amb nosaltres.</p>
+                <p id="priv-s4-text1">Si tens qualsevol dubte sobre aquesta política de privadesa, el funcionament tècnic de l'emmagatzematge de dades, o vols fer algun suggeriment de millora per a l'aplicació, estem a la teva disposició per escoltar-te.</p>
             </section>
+
         </div>
     </main>
 
@@ -61,6 +68,7 @@
         <p id="text-footer" class="font-medium">&copy; FinalMark 2026 - Desenvolupat per a estudiants</p>
     </footer>
 
+    <!-- Scripts per mantenir el selector d'idiomes sincronitzat -->
     <script src="translations.js"></script>
     <script src="language.js"></script>
 </body>
