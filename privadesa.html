@@ -6,13 +6,11 @@
     <title>Política de Privadesa | FinalMark</title>
     <link rel="icon" type="image/png" href="favicon.png">
     
-    <!-- Script de Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-[#f8fafc] text-slate-700 font-sans antialiased min-h-screen flex flex-col selection:bg-teal-100 selection:text-teal-800">
 
-    <!-- CAPÇALERA -->
     <header class="w-full bg-white border-b border-slate-200 py-4 shadow-sm">
         <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center">
@@ -20,60 +18,50 @@
             </a>
             
             <div class="flex items-center space-x-4 text-sm">
-                <select class="bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-xs font-medium text-slate-600 focus:outline-none focus:border-teal-500 cursor-pointer">
+                <select id="language-selector" onchange="languageManager.canviarIdioma(this.value)" class="bg-slate-50 border border-slate-200 rounded-lg px-2 py-1.5 text-xs font-medium text-slate-600 focus:outline-none focus:border-teal-500 cursor-pointer">
                     <option value="ca">Català</option>
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
                 </select>
-                <a href="index.html" class="text-teal-700 hover:text-teal-800 font-medium transition flex items-center gap-1">
-                    <span>←</span> Tornar a la calculadora
+                <a href="index.html" id="text-back-calc" class="text-teal-700 hover:text-teal-800 font-medium transition flex items-center gap-1">
+                    ← Tornar a la calculadora
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- CONTINGUT PRINCIPAL -->
     <main class="max-w-3xl mx-auto px-6 py-12 flex-grow w-full">
         
         <div class="mb-10">
-            <h1 class="text-3xl font-bold text-slate-900 tracking-tight">Política de Privadesa</h1>
-            <p class="text-sm text-slate-400 mt-2">Última actualització: Novembre 2026</p>
+            <h1 id="priv-title" class="text-3xl font-bold text-slate-900 tracking-tight">Política de Privadesa</h1>
+            <p id="priv-updated" class="text-sm text-slate-400 mt-2">Última actualització: Novembre 2026</p>
         </div>
 
         <div class="space-y-8 text-slate-600 leading-relaxed">
-            
-            <!-- SECCIÓ 1 -->
             <section>
-                <h2 class="text-lg font-bold text-slate-800 mb-3">1. Informació general i responsabilitat</h2>
-                <p>A FinalMark ens prenem molt seriosament la privadesa dels nostres usuaris. Com a eina dissenyada per ajudar els estudiants universitaris, el nostre objectiu és oferir un servei eficient, clar i segur. Aquesta política descriu quines dades tractem, com les gestionem i quins són els teus drets com a usuari en utilitzar la nostra aplicació web.</p>
+                <h2 id="priv-s1-title" class="text-lg font-bold text-slate-800 mb-3">1. Informació general i responsabilitat</h2>
+                <p id="priv-s1-text">A FinalMark ens prenem molt seriosament la privadesa dels nostres usuaris. Com a eina dissenyada per ajudar els estudiants universitaris, el nostre objectiu és oferir un servei eficient, clar i segur.</p>
             </section>
-
-            <!-- SECCIÓ 2 -->
             <section>
-                <h2 class="text-lg font-bold text-slate-800 mb-3">2. Dades emmagatzemades localment (LocalStorage)</h2>
-                <p>FinalMark no utilitza servidors externs complexos ni bases de dades al núvol per guardar la teva informació acadèmica. Totes les dades que introdueixes a l'aplicació (com noms d'assignatures, qualificacions i percentatges d'avaluació) s'emmagatzemen exclusivament de manera local al teu propi dispositiu (ordinador, tauleta o telèfon mòbil) mitjançant la tecnologia <strong>LocalStorage</strong> del teu navegador.</p>
-                <p class="mt-2">Això significa que des de FinalMark <strong>no tenim accés a les teves notes, no les recopilem, no les llegim i no les compartim amb tercers</strong>. El control total de la informació és teu. Si esborres les dades de memòria cau (catxé) del teu navegador, la teva informació acadèmica s'eliminarà permanentment.</p>
+                <h2 id="priv-s2-title" class="text-lg font-bold text-slate-800 mb-3">2. Dades emmagatzemades localment (LocalStorage)</h2>
+                <p id="priv-s2-text1">FinalMark no utilitza servidors externs complexos. Totes les dades s'emmagatzemen exclusivament de manera local al teu dispositiu mitjançant LocalStorage.</p>
             </section>
-
-            <!-- SECCIÓ 3 -->
             <section>
-                <h2 class="text-lg font-bold text-slate-800 mb-3">3. Ús de Publicitat (Google AdSense)</h2>
-                <p>Per poder mantenir el servei de FinalMark completament gratuït per a tots els estudiants, la plataforma utilitza <strong>Google AdSense</strong> per mostrar anuncis publicitaris.</p>
-                <p class="mt-2">Google, com a proveïdor associat, utilitza galetes (cookies) per publicar anuncis basats en les visites anteriors que un usuari ha fet a aquest lloc web o a altres llocs d'Internet. L'ús de galetes de publicitat permet a Google i als seus socis mostrar anuncis personalitzats. Pots gestionar, personalitzar o desactivar l'ús d'aquestes cookies de publicitat personalitzada visitant la pàgina de <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:underline">Configuració d'anuncis de Google</a>.</p>
+                <h2 id="priv-s3-title" class="text-lg font-bold text-slate-800 mb-3">3. Ús de Publicitat (Google AdSense)</h2>
+                <p id="priv-s3-text1">Per poder mantenir el servei gratuït, utilitzem Google AdSense per mostrar anuncis.</p>
             </section>
-
-            <!-- SECCIÓ 4 -->
             <section>
-                <h2 class="text-lg font-bold text-slate-800 mb-3">4. Contacte</h2>
-                <p>Si tens qualsevol dubte sobre aquesta política de privadesa, el funcionament tècnic de l'emmagatzematge de dades, o vols fer algun suggeriment de millora per a l'aplicació, estem a la teva disposició per escoltar-te.</p>
-                <p class="mt-2">Pots posar-te en contacte amb l'equip de desenvolupament o deixar-nos les teves impressions per seguir millorant l'eina per a tots els estudiants.</p>
+                <h2 id="priv-s4-title" class="text-lg font-bold text-slate-800 mb-3">4. Contacte</h2>
+                <p id="priv-s4-text1">Si tens qualsevol dubte sobre aquesta política, pots posar-te en contacte amb nosaltres.</p>
             </section>
-
         </div>
     </main>
 
-    <!-- PEU DE PÀGINA -->
     <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 w-full mt-auto">
-        <p class="font-medium">&copy; FinalMark 2026</p>
+        <p id="text-footer" class="font-medium">&copy; FinalMark 2026 - Desenvolupat per a estudiants</p>
     </footer>
 
+    <script src="translations.js"></script>
+    <script src="language.js"></script>
 </body>
 </html>
