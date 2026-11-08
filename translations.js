@@ -36,6 +36,7 @@ const translations = {
         "msg-test-detall": "Cada pregunta encertada suma <strong>+{valEncert}</strong>.<br>Cada error resta <strong>-{valError}</strong>.",
         "msg-test-error-preguntes": "Error: El test ha de tenir preguntes.",
         "msg-test-error-massa": "Has posat més respostes que preguntes!",
+        "msg-obrint-whatsapp": "Obrint WhatsApp... ⏳",
 
         // --- POLÍTICA DE PRIVADESA ---
         "text-back-calc": "← Tornar a la calculadora",
@@ -87,6 +88,7 @@ const translations = {
         "msg-test-detall": "Cada pregunta acertada suma <strong>+{valEncert}</strong>.<br>Cada fallo resta <strong>-{valError}</strong>.",
         "msg-test-error-preguntes": "Error: El test debe tener preguntas.",
         "msg-test-error-massa": "¡Has puesto más respuestas que preguntas!",
+        "msg-obrint-whatsapp": "Abriendo WhatsApp... ⏳",
 
         // --- POLÍTICA DE PRIVACIDAD ---
         "text-back-calc": "← Volver a la calculadora",
@@ -138,6 +140,7 @@ const translations = {
         "msg-test-detall": "Each correct question adds <strong>+{valEncert}</strong>.<br>Each mistake subtracts <strong>-{valError}</strong>.",
         "msg-test-error-preguntes": "Error: The test must have questions.",
         "msg-test-error-massa": "You entered more answers than total questions!",
+        "msg-obrint-whatsapp": "Opening WhatsApp... ⏳",
 
         // --- PRIVACY POLICY ---
         "text-back-calc": "← Back to calculator",
