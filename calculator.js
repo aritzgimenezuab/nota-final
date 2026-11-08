@@ -1,5 +1,5 @@
 const calculatorManager = {
-    // 1. Funcions de Mitjana Ponderada
+    // ---- 1. MITJANA PONDERADA ----
     afegirFila: function() {
         const container = document.getElementById('files-container');
         const filaId = Date.now();
@@ -34,54 +34,20 @@ const calculatorManager = {
 
         if (sumaPesos === 0) {
             textNota.innerText = "0.00";
-            subText.innerText = "Afegeix notes i percentatges per calcular.";
+            subText.innerText = "Afegeix notes per calcular.";
             return;
         }
 
         if (sumaPesos !== 100) {
-            subText.innerText = `Els percentatges sumen ${sumaPesos}%, no 100%. La nota es mostra proporcionalment.`;
+            subText.innerText = `Els percentatges sumen ${sumaPesos}%, no 100%. La nota final mostrada és proporcional.`;
             textNota.innerText = (sumaPonderada / (sumaPesos / 100)).toFixed(2);
         } else {
             textNota.innerText = sumaPonderada.toFixed(2);
-            subText.innerText = "Aquesta és la teva nota mitjana ponderada exacta.";
+            subText.innerText = "Aquesta és la teva nota mitjana ponderada exacta tenint en compte els percentatges introduïts.";
         }
     },
 
-    // 2. Funció Examen Invers
-    calcularNotaInversa: function() {
-        const notaAcumulada = parseFloat(document.getElementById('inv-acumulada').value) || 0;
-        const pesExamen = parseFloat(document.getElementById('inv-pes').value) || 0;
-        const notaObjectiu = parseFloat(document.getElementById('inv-objectiu').value) || 5;
-
-        const box = document.getElementById('resultat-box');
-        const textNota = document.getElementById('resultat-text');
-        const subText = document.getElementById('resultat-subtext');
-        box.classList.remove('hidden');
-
-        if (pesExamen <= 0 || pesExamen > 100) {
-            textNota.innerText = "-";
-            subText.innerText = "Posa un percentatge vàlid per a l'examen.";
-            return;
-        }
-
-        const pesAcumulat = 100 - pesExamen;
-        const partAcumulada = notaAcumulada * (pesAcumulat / 100);
-        const puntsFaltants = notaObjectiu - partAcumulada;
-        const notaNecessaria = puntsFaltants / (pesExamen / 100);
-
-        if (notaNecessaria > 10) {
-            textNota.innerText = notaNecessaria.toFixed(2);
-            subText.innerHTML = "Impossible. Necessites més d'un 10 a l'examen.";
-        } else if (notaNecessaria <= 0) {
-            textNota.innerText = "0.00";
-            subText.innerHTML = "Ja tens l'objectiu superat només amb l'avaluació continuada!";
-        } else {
-            textNota.innerText = notaNecessaria.toFixed(2);
-            subText.innerHTML = `Necessites un <strong>${notaNecessaria.toFixed(2)}</strong> a l'examen per arribar al ${notaObjectiu}.`;
-        }
-    },
-
-    // 3. NOVA Funció Tipus Test
+    // ---- 2. CÀLCUL TIPUS TEST ----
     calcularTest: function() {
         const totalPreguntes = parseFloat(document.getElementById('test-total').value) || 0;
         const notaMaxima = parseFloat(document.getElementById('test-maxima').value) || 10;
@@ -98,13 +64,12 @@ const calculatorManager = {
 
         if (totalPreguntes <= 0) {
             textNota.innerText = "-";
-            subText.innerText = "El test ha de tenir preguntes.";
+            subText.innerText = "Error: El test ha de tenir preguntes.";
             return;
         }
-
         if ((encerts + errors + blancs) > totalPreguntes) {
             textNota.innerText = "Error";
-            subText.innerText = "Tens més encerts, fallades i blancs que preguntes totals!";
+            subText.innerText = "Has sumat més encerts, fallades i blancs que el total de preguntes de l'examen!";
             return;
         }
 
@@ -115,13 +80,65 @@ const calculatorManager = {
         const puntsPenalitzacio = errors * valorError;
         let notaFinal = puntsEncerts - puntsPenalitzacio;
         
-        if (notaFinal < 0) notaFinal = 0; // Evitar notes negatives
+        if (notaFinal < 0) notaFinal = 0;
 
         textNota.innerText = notaFinal.toFixed(2);
         subText.innerHTML = `
-            Cada encert et suma <strong>+${valorPregunta.toFixed(3)}</strong> punts.<br>
-            Cada error et resta <strong>-${valorError.toFixed(3)}</strong> punts.<br>
-            Base: ${puntsEncerts.toFixed(2)} punts | Penalització: -${puntsPenalitzacio.toFixed(2)} punts.
+            Cada pregunta encertada suma <strong>+${valorPregunta.toFixed(3)}</strong>.<br>
+            Cada error resta <strong>-${valorError.toFixed(3)}</strong>.<br><br>
+            Càlcul: Tens ${puntsEncerts.toFixed(2)} punts base i una penalització de -${puntsPenalitzacio.toFixed(2)} punts.
         `;
+    },
+
+    // ---- 3. COMPARTIR PER WHATSAPP MITJANÇANT IMATGE ----
+    compartirNotaWhatsApp: async function() {
+        const btnCompartir = document.getElementById('btn-compartir');
+        const textOriginal = btnCompartir.innerHTML;
+        
+        // Avisem que s'està generant
+        btnCompartir.innerHTML = "Generant imatge... ⏳";
+        
+        try {
+            // Seleccionem només la caixa blanca neta amb els càlculs i el logo
+            const zonaCaptura = document.getElementById('zona-captura');
+            
+            // Creem la imatge amb html2canvas
+            const canvas = await html2canvas(zonaCaptura, {
+                backgroundColor: "#ffffff",
+                scale: 2 // Fa que la foto tingui alta resolució
+            });
+
+            // Convertim el canvas en un arxiu d'imatge
+            canvas.toBlob(async (blob) => {
+                const fitxer = new File([blob], "Nota-FinalMark.png", { type: "image/png" });
+                
+                // Mirem si el mòbil permet compartir arxius (ho fan gairebé tots els mòbils avui en dia)
+                if (navigator.canShare && navigator.canShare({ files: [fitxer] })) {
+                    await navigator.share({
+                        title: 'La meva nota de FinalMark',
+                        text: 'Mira la nota que he tret! Calculat ràpid amb FinalMark.app',
+                        files: [fitxer]
+                    });
+                    btnCompartir.innerHTML = "Compartit! ✅";
+                } else {
+                    // Si el navegador és vell o s'està des de PC, descarreguem la foto
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = "Nota-FinalMark.png";
+                    a.click();
+                    alert("S'ha descarregat la foto de la nota als teus arxius! Ara la pots enviar per WhatsApp tranquil·lament.");
+                    btnCompartir.innerHTML = textOriginal;
+                }
+                
+                // Restaurem el botó passats 3 segons
+                setTimeout(() => { btnCompartir.innerHTML = textOriginal; }, 3000);
+            });
+
+        } catch (error) {
+            console.error("Error al generar imatge:", error);
+            alert("No s'ha pogut generar la imatge. Revisa que tinguis connexió per carregar la llibreria.");
+            btnCompartir.innerHTML = textOriginal;
+        }
     }
 };
