@@ -29,10 +29,13 @@ const translations = {
         "text-modal-desc": "Vincula el teu correu per no perdre les dades.",
         "text-btn-sync": "Sincronitzar",
         
-        // --- MISSATGES DE RESULTAT TRaduïBLES ---
+        // --- MISSATGES DE RESULTAT ---
         "msg-mitjana-exacta": "Aquesta és la teva nota mitjana ponderada exacta.",
         "msg-mitjana-proporcional": "Els percentatges no sumen 100%. La nota final mostrada és proporcional.",
         "msg-sense-notes": "Afegeix notes per calcular.",
+        "msg-test-detall": "Cada pregunta encertada suma <strong>+{valEncert}</strong>.<br>Cada error resta <strong>-{valError}</strong>.",
+        "msg-test-error-preguntes": "Error: El test ha de tenir preguntes.",
+        "msg-test-error-massa": "Has posat més respostes que preguntes!",
 
         // --- POLÍTICA DE PRIVADESA ---
         "text-back-calc": "← Tornar a la calculadora",
@@ -77,10 +80,13 @@ const translations = {
         "text-modal-desc": "Vincula tu correo para no perder los datos.",
         "text-btn-sync": "Sincronizar",
 
-        // --- MISSATGES DE RESULTAT TRaduïBLES ---
+        // --- MISSATGES DE RESULTAT ---
         "msg-mitjana-exacta": "Esta es tu nota media ponderada exacta.",
         "msg-mitjana-proporcional": "Los porcentajes no suman 100%. La nota final mostrada es proporcional.",
         "msg-sense-notes": "Añade notas para calcular.",
+        "msg-test-detall": "Cada pregunta acertada suma <strong>+{valEncert}</strong>.<br>Cada fallo resta <strong>-{valError}</strong>.",
+        "msg-test-error-preguntes": "Error: El test debe tener preguntas.",
+        "msg-test-error-massa": "¡Has puesto más respuestas que preguntas!",
 
         // --- POLÍTICA DE PRIVACIDAD ---
         "text-back-calc": "← Volver a la calculadora",
@@ -125,10 +131,13 @@ const translations = {
         "text-modal-desc": "Link your email so you don't lose your data.",
         "text-btn-sync": "Sync",
 
-        // --- MISSATGES DE RESULTAT TRaduïBLES ---
+        // --- MISSATGES DE RESULTAT ---
         "msg-mitjana-exacta": "This is your exact weighted average grade.",
         "msg-mitjana-proporcional": "Percentages do not add up to 100%. The final grade shown is proportional.",
         "msg-sense-notes": "Add grades to calculate.",
+        "msg-test-detall": "Each correct question adds <strong>+{valEncert}</strong>.<br>Each mistake subtracts <strong>-{valError}</strong>.",
+        "msg-test-error-preguntes": "Error: The test must have questions.",
+        "msg-test-error-massa": "You entered more answers than total questions!",
 
         // --- PRIVACY POLICY ---
         "text-back-calc": "← Back to calculator",
