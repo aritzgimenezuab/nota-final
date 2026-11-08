@@ -86,14 +86,13 @@ const calculatorManager = {
 
         textNota.innerText = notaFinal.toFixed(2);
         
-        // Plantilla traduïda dinàmicament
         let plantilla = dicc["msg-test-detall"] || "Cada pregunta encertada suma +{valEncert}.<br>Cada error resta -{valError}.";
         plantilla = plantilla.replace("{valEncert}", valorPregunta.toFixed(3)).replace("{valError}", valorError.toFixed(3));
         
         subText.innerHTML = plantilla;
     },
 
-        compartirNotaWhatsApp: async function() {
+    compartirNotaWhatsApp: async function() {
         const btnCompartir = document.getElementById('btn-compartir');
         const idiomaActiu = localStorage.getItem('FinalMark_Idioma') || 'ca';
         const dicc = translations[idiomaActiu] || translations['ca'];
@@ -128,5 +127,4 @@ const calculatorManager = {
             btnCompartir.innerHTML = dicc["text-btn-compartir"] || "Compartir Resultat";
         }
     }
-
 };
