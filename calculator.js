@@ -2,7 +2,6 @@ const calculatorManager = {
     afegirFila: function() {
         const container = document.getElementById('files-container');
         const filaId = Date.now();
-        // APLICANT PERCENTATGES FIXOS PERQUÈ NO ES PUGUIN ESCLAFAR
         const filaHTML = `
             <div class="flex flex-col sm:flex-row gap-2 items-center fila-nota w-full" id="fila-${filaId}">
                 <input type="text" placeholder="Nom (ex: Pràctica 1)" class="w-full sm:w-[50%] bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-sm">
@@ -31,18 +30,22 @@ const calculatorManager = {
         const subText = document.getElementById('resultat-subtext');
         box.classList.remove('hidden');
 
+        // Obtenim l'idioma actual del navegador/selector
+        const idiomaActiu = localStorage.getItem('FinalMark_Idioma') || 'ca';
+        const dicc = translations[idiomaActiu] || translations['ca'];
+
         if (sumaPesos === 0) {
             textNota.innerText = "0.00";
-            subText.innerText = "Afegeix notes per calcular.";
+            subText.innerText = dicc["msg-sense-notes"] || "Afegeix notes per calcular.";
             return;
         }
 
         if (sumaPesos !== 100) {
             textNota.innerText = (sumaPonderada / (sumaPesos / 100)).toFixed(2);
-            subText.innerText = `Els percentatges sumen ${sumaPesos}%, no 100%. La nota final mostrada és proporcional.`;
+            subText.innerText = dicc["msg-mitjana-proporcional"] || "Els percentatges no sumen 100%.";
         } else {
             textNota.innerText = sumaPonderada.toFixed(2);
-            subText.innerText = "Aquesta és la teva nota mitjana ponderada exacta.";
+            subText.innerText = dicc["msg-mitjana-exacta"] || "Aquesta és la teva nota mitjana ponderada exacta.";
         }
     },
 
