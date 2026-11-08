@@ -1,27 +1,45 @@
-class AppManager {
-    canviarPestanya(modul) {
-        const btnM = document.getElementById('btn-pestanya-mitjana');
-        const btnE = document.getElementById('btn-pestanya-examen');
-        const panelM = document.getElementById('modul-mitjana');
-        const panelE = document.getElementById('modul-examen');
+const appManager = {
+    canviarPestanya: function(pestanya) {
+        // Amagar tots els mòduls i el resultat
+        document.getElementById('modul-mitjana').classList.add('hidden');
+        document.getElementById('modul-examen').classList.add('hidden');
+        document.getElementById('modul-test').classList.add('hidden');
         document.getElementById('resultat-box').classList.add('hidden');
 
-        if (modul === 'mitjana') {
-            btnM.className = "flex-1 py-2 rounded-xl text-xs font-medium transition bg-white text-slate-800 shadow-xs";
-            btnE.className = "flex-1 py-2 rounded-xl text-xs font-medium transition text-slate-500 hover:text-slate-800";
-            panelM.classList.remove('hidden'); panelE.classList.add('hidden');
-        } else {
-            btnE.className = "flex-1 py-2 rounded-xl text-xs font-medium transition bg-white text-slate-800 shadow-xs";
-            btnM.className = "flex-1 py-2 rounded-xl text-xs font-medium transition text-slate-500 hover:text-slate-800";
-            panelE.classList.remove('hidden'); panelM.classList.add('hidden');
+        // Resetejar l'estil de tots els botons a inactiu
+        const btnClassesInactiu = ['text-slate-500', 'hover:text-slate-800'];
+        const btnClassesActiu = ['bg-white', 'text-slate-800', 'shadow-sm'];
+
+        const botons = ['btn-pestanya-mitjana', 'btn-pestanya-examen', 'btn-pestanya-test'];
+        botons.forEach(id => {
+            const btn = document.getElementById(id);
+            if(btn) {
+                btn.classList.remove(...btnClassesActiu);
+                btn.classList.add(...btnClassesInactiu);
+            }
+        });
+
+        // Mostrar el mòdul que toca i pintar el seu botó
+        if (pestanya === 'mitjana') {
+            document.getElementById('modul-mitjana').classList.remove('hidden');
+            const btn = document.getElementById('btn-pestanya-mitjana');
+            btn.classList.remove(...btnClassesInactiu);
+            btn.classList.add(...btnClassesActiu);
+        } else if (pestanya === 'examen') {
+            document.getElementById('modul-examen').classList.remove('hidden');
+            const btn = document.getElementById('btn-pestanya-examen');
+            btn.classList.remove(...btnClassesInactiu);
+            btn.classList.add(...btnClassesActiu);
+        } else if (pestanya === 'test') {
+            document.getElementById('modul-test').classList.remove('hidden');
+            const btn = document.getElementById('btn-pestanya-test');
+            btn.classList.remove(...btnClassesInactiu);
+            btn.classList.add(...btnClassesActiu);
         }
     }
-}
-const appManager = new AppManager();
-
-window.onload = () => {
-    languageManager.inicialitzar();
-    themeManager.aplicarEsteticaSerena();
-    storageManager.carregarEstatInicial();
-    authManager.verificarEstat();
 };
+
+// Quan s'obre la web, carregar la primera pestanya per defecte
+document.addEventListener('DOMContentLoaded', () => {
+    appManager.canviarPestanya('mitjana');
+});
