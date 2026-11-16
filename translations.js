@@ -11,8 +11,6 @@ const translations = {
         "faq-a1": "Sí. Si fas servir el botó de desar assignatura, les dades s'emmagatzemen de manera privada al teu propi dispositiu mitjançant tecnologia LocalStorage, sense enviar cap informació acadèmica a servidors externs.",
         "faq-q2": "Puc calcular notes sobre 10, sobre 20 o sobre 100?",
         "faq-a2": "Totalment. Tant a la pestanya de mitjana ponderada com a l'apartat de puntuació màxima del test pots adaptar l'escala al sistema d'avaluació de la teva facultat.",
-
-        
         "text-tag": "Eina de Supervivència Universitària",
         "text-title": "calcula la teva nota",
         "text-compte": "El meu compte",
@@ -41,8 +39,6 @@ const translations = {
         "text-modal-title": "Guarda les teves assignatures",
         "text-modal-desc": "Vincula el teu correu per no perdre les dades.",
         "text-btn-sync": "Sincronitzar",
-        
-        // --- MISSATGES DE RESULTAT ---
         "msg-mitjana-exacta": "Aquesta és la teva nota mitjana ponderada exacta.",
         "msg-mitjana-proporcional": "Els percentatges no sumen 100%. La nota final mostrada és proporcional.",
         "msg-sense-notes": "Afegeix notes per calcular.",
@@ -50,8 +46,6 @@ const translations = {
         "msg-test-error-preguntes": "Error: El test ha de tenir preguntes.",
         "msg-test-error-massa": "Has posat més respostes que preguntes!",
         "msg-obrint-whatsapp": "Obrint WhatsApp... ⏳",
-
-        // --- POLÍTICA DE PRIVADESA LLARGA ---
         "text-back-calc": "← Tornar a la calculadora",
         "priv-title": "Política de Privadesa",
         "priv-updated": "Última actualització: Novembre 2026",
@@ -77,8 +71,6 @@ const translations = {
         "faq-a1": "Sí. Si utilizas el botón de guardar asignatura, los datos se almacenan de forma privada en tu propio dispositivo mediante tecnología LocalStorage, sin enviar ninguna información académica a servidores externos.",
         "faq-q2": "¿Puedo calcular notas sobre 10, sobre 20 o sobre 100?",
         "faq-a2": "Totalmente. Tanto en la pestaña de media ponderada como en el apartado de puntuación máxima del test puedes adaptar la escala al sistema de evaluación de tu facultad.",
-
-        
         "text-tag": "Herramienta de Supervivencia Universitaria",
         "text-title": "calcula tu nota",
         "text-compte": "Mi cuenta",
@@ -107,8 +99,6 @@ const translations = {
         "text-modal-title": "Guarda tus asignaturas",
         "text-modal-desc": "Vincula tu correo para no perder los datos.",
         "text-btn-sync": "Sincronizar",
-
-        // --- MISSATGES DE RESULTAT ---
         "msg-mitjana-exacta": "Esta es tu nota media ponderada exacta.",
         "msg-mitjana-proporcional": "Los porcentajes no suman 100%. La nota final mostrada es proporcional.",
         "msg-sense-notes": "Añade notas para calcular.",
@@ -116,8 +106,6 @@ const translations = {
         "msg-test-error-preguntes": "Error: El test debe tener preguntas.",
         "msg-test-error-massa": "¡Has puesto más respuestas que preguntas!",
         "msg-obrint-whatsapp": "Abriendo WhatsApp... ⏳",
-
-        // --- POLÍTICA DE PRIVACIDAD LLARGA ---
         "text-back-calc": "← Volver a la calculadora",
         "priv-title": "Política de Privacidad",
         "priv-updated": "Última actualización: Noviembre 2026",
@@ -127,7 +115,7 @@ const translations = {
         "priv-s2-text1": "FinalMark no utiliza servidores externos complejos ni bases de datos en la nube para guardar tu información académica. Todos los datos que introduces en la aplicación (como nombres de asignaturas, calificaciones y porcentajes de evaluación) se almacenan exclusivamente de manera local en tu propio dispositivo (ordenador, tablet o teléfono móvil) mediante la tecnología LocalStorage de tu navegador.",
         "priv-s2-text2": "Esto significa que desde FinalMark no tenemos acceso a tus notas, no las recopilamos, no las leemos y no las compartimos con terceros. El control total de la información es tuyo. Si borras los datos de la memoria caché de tu navegador, tu información académica se eliminará permanentemente.",
         "priv-s3-title": "3. Uso de Publicidad (Google AdSense)",
-        "priv-s3-text1": "Para poder mantener el servicio de FinalMark completamente gratuito para todos los estudiantes, la plataforma utiliza Google AdSense para mostrar anuncios publicitarios. Google utiliza cookies para publicar anuncios basados en las visitas anteriores de los usuarios a este sitio web o a otros sitios de Internet.",
+        "priv-s3-text1": "Para poder mantener el servicio de FinalMark completamente gratuito para todos los estudiantes, la plataforma utiliza Google AdSense para mostrar anuncios publicitaris. Google utiliza cookies para publicar anuncios basados en las visitas anteriores de los usuarios a este sitio web o a otros sitios de Internet.",
         "priv-s4-title": "4. Contacto",
         "priv-s4-text1": "Si tienes cualquier duda sobre esta política de privacidad, el funcionamiento técnico del almacenamiento de datos, o quieres hacer alguna sugerencia de mejora para la aplicación, estamos a tu disposición para escucharte."
     },
@@ -143,8 +131,6 @@ const translations = {
         "faq-a1": "Yes. When you use the save subject button, your data is stored privately on your own device using LocalStorage technology, without sending any academic information to external servers.",
         "faq-q2": "Can I calculate grades out of 10, 20, or 100?",
         "faq-a2": "Absolutely. Both in the weighted average tab and in the test maximum score field, you can adapt the scale to your university's grading system.",
-
-        
         "text-tag": "University Survival Tool",
         "text-title": "calculate your grade",
         "text-compte": "My account",
@@ -173,8 +159,6 @@ const translations = {
         "text-modal-title": "Save your subjects",
         "text-modal-desc": "Link your email so you don't lose your data.",
         "text-btn-sync": "Sync",
-
-        // --- MISSATGES DE RESULTAT ---
         "msg-mitjana-exacta": "This is your exact weighted average grade.",
         "msg-mitjana-proporcional": "Percentages do not add up to 100%. The final grade shown is proportional.",
         "msg-sense-notes": "Add grades to calculate.",
@@ -182,8 +166,6 @@ const translations = {
         "msg-test-error-preguntes": "Error: The test must have questions.",
         "msg-test-error-massa": "You entered more answers than total questions!",
         "msg-obrint-whatsapp": "Opening WhatsApp... ⏳",
-
-        // --- PRIVACY POLICY LLARGA ---
         "text-back-calc": "← Back to calculator",
         "priv-title": "Privacy Policy",
         "priv-updated": "Last updated: November 2026",
