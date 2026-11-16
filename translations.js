@@ -1,5 +1,18 @@
 const translations = {
     ca: {
+        "seo-h1": "Com calcular la nota mitjana ponderada a la universitat?",
+        "seo-p1": "A la majoria de graus universitaris, la qualificació final d'una assignatura no és una mitjana aritmètica simple, sinó una mitjana ponderada on cada bloc d'avaluació (exàmens parcials, seminaris, pràctiques de laboratori o treballs) té un pes percentual diferent sobre el 100% de la nota.",
+        "seo-p2": "Per calcular-la manualment, cal multiplicar cada nota obtinguda pel seu percentatge dividit entre 100 i sumar tots els resultats. Amb FinalMark pots introduir tantes proves com necessitis i obtenir la nota exacta a l'instant, o fins i tot calcular la teva nota proporcional si encara no tens avaluat el 100% de l'assignatura.",
+        "seo-h2": "Fórmula per calcular exàmens tipus test amb penalització",
+        "seo-p3": "Els exàmens tipus test a la universitat i a les oposicions solen aplicar coeficients reductors per evitar que les respostes a l'atzar sumin punts. Les penalitzacions més habituals són restar 1/4 (0,25) en preguntes de quatre opcions o 1/3 (0,33) en preguntes de tres opcions.",
+        "seo-p4": "La nostra calculadora determina automàticament el valor real de cada pregunta encertada segons la puntuació màxima de l'examen i hi resta la part proporcional exacta per cada error comès, deixant les preguntes en blanc sense penalització.",
+        "seo-h3": "Preguntes Freqüents (FAQ)",
+        "faq-q1": "Les meves notes queden guardades si tanco el navegador?",
+        "faq-a1": "Sí. Si fas servir el botó de desar assignatura, les dades s'emmagatzemen de manera privada al teu propi dispositiu mitjançant tecnologia LocalStorage, sense enviar cap informació acadèmica a servidors externs.",
+        "faq-q2": "Puc calcular notes sobre 10, sobre 20 o sobre 100?",
+        "faq-a2": "Totalment. Tant a la pestanya de mitjana ponderada com a l'apartat de puntuació màxima del test pots adaptar l'escala al sistema d'avaluació de la teva facultat.",
+
+        
         "text-tag": "Eina de Supervivència Universitària",
         "text-title": "calcula la teva nota",
         "text-compte": "El meu compte",
@@ -53,6 +66,19 @@ const translations = {
         "priv-s4-text1": "Si tens qualsevol dubte sobre aquesta política de privadesa, el funcionament tècnic de l'emmagatzematge de dades, o vols fer algun suggeriment de millora per a l'aplicació, estem a la teva disposició per escoltar-te."
     },
     es: {
+        "seo-h1": "¿Cómo calcular la nota media ponderada en la universidad?",
+        "seo-p1": "En la mayoría de grados universitarios, la calificación final de una asignatura no es una media aritmética simple, sino una media ponderada donde cada bloque de evaluación (exámenes parciales, seminarios, prácticas de laboratorio o trabajos) tiene un peso porcentual distinto sobre el 100% de la nota.",
+        "seo-p2": "Para calcularla manualmente, hay que multiplicar cada nota obtenida por su porcentaje dividido entre 100 y sumar todos los resultados. Con FinalMark puedes introducir tantas pruebas como necesites y obtener la nota exacta al instante, o incluso calcular tu nota proporcional si aún no tienes evaluado el 100% de la asignatura.",
+        "seo-h2": "Fórmula para calcular exámenes tipo test con penalización",
+        "seo-p3": "Los exámenes tipo test en la universidad y oposiciones suelen aplicar coeficientes reductores para evitar que las respuestas al azar sumen puntos. Las penalizaciones más habituales son restar 1/4 (0,25) en preguntas de cuatro opciones o 1/3 (0,33) en preguntas de tres opciones.",
+        "seo-p4": "Nuestra calculadora determina automáticamente el valor real de cada pregunta acertada según la puntuación máxima del examen y resta la parte proporcional exacta por cada fallo cometido, dejando las preguntas en blanco sin penalización.",
+        "seo-h3": "Preguntas Frecuentes (FAQ)",
+        "faq-q1": "¿Mis notas quedan guardadas si cierro el navegador?",
+        "faq-a1": "Sí. Si utilizas el botón de guardar asignatura, los datos se almacenan de forma privada en tu propio dispositivo mediante tecnología LocalStorage, sin enviar ninguna información académica a servidores externos.",
+        "faq-q2": "¿Puedo calcular notas sobre 10, sobre 20 o sobre 100?",
+        "faq-a2": "Totalmente. Tanto en la pestaña de media ponderada como en el apartado de puntuación máxima del test puedes adaptar la escala al sistema de evaluación de tu facultad.",
+
+        
         "text-tag": "Herramienta de Supervivencia Universitaria",
         "text-title": "calcula tu nota",
         "text-compte": "Mi cuenta",
@@ -106,6 +132,19 @@ const translations = {
         "priv-s4-text1": "Si tienes cualquier duda sobre esta política de privacidad, el funcionamiento técnico del almacenamiento de datos, o quieres hacer alguna sugerencia de mejora para la aplicación, estamos a tu disposición para escucharte."
     },
     en: {
+        "seo-h1": "How to calculate your weighted average grade at university?",
+        "seo-p1": "In most university degrees, the final grade of a subject is not a simple arithmetic average, but a weighted average where each assessment block (midterm exams, seminars, lab practices, or assignments) carries a different percentage weight toward 100% of the grade.",
+        "seo-p2": "To calculate it manually, multiply each grade obtained by its percentage divided by 100 and add all the results together. With FinalMark, you can enter as many tests as you need and get the exact grade instantly, or even calculate your proportional grade if 100% of the subject has not been graded yet.",
+        "seo-h2": "Formula for calculating multiple-choice exams with negative marking",
+        "seo-p3": "Multiple-choice exams at university often apply penalty coefficients to prevent random guessing from adding points. The most common penalties subtract 1/4 (0.25) for four-option questions or 1/3 (0.33) for three-option questions.",
+        "seo-p4": "Our calculator automatically determines the exact value of each correct answer based on the maximum exam score and subtracts the exact proportional penalty for each mistake, leaving unanswered questions without penalty.",
+        "seo-h3": "Frequently Asked Questions (FAQ)",
+        "faq-q1": "Are my grades saved if I close the browser?",
+        "faq-a1": "Yes. When you use the save subject button, your data is stored privately on your own device using LocalStorage technology, without sending any academic information to external servers.",
+        "faq-q2": "Can I calculate grades out of 10, 20, or 100?",
+        "faq-a2": "Absolutely. Both in the weighted average tab and in the test maximum score field, you can adapt the scale to your university's grading system.",
+
+        
         "text-tag": "University Survival Tool",
         "text-title": "calculate your grade",
         "text-compte": "My account",
